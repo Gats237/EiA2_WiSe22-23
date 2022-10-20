@@ -1,7 +1,8 @@
+"use strict";
 /*
 Aufgabe: Aufgabe 1 Zufallsgedicht
 Name: Henning Pils
-Matrikel: 236955
+Matrikel: 269355
 Datum: 13.10.2022
 Quellen: Robert Schindler
 */
