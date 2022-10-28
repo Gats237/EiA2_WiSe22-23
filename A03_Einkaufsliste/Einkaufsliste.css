@@ -1,0 +1,28 @@
+body {
+    background-image: url(./3F279B5D-BC2D-4F33-938E-17120E5348FC.JPG);
+    color: rgb(225, 218, 11);
+    position: top;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;}
+ 
+h1 { margin-left: 40%;
+     height: 60px;}
+ 
+.div1 { position: relative;
+        width: 80%;
+        height: 20%;
+        background-color: rgb(23, 122, 89);
+        margin-left: 5%;
+        border-style: solid;
+        border-color: rgb(0, 0, 0);
+         }
+
+.text{ width: 40%;
+        height: 40%;}
+
+.dropbtn{ height: 50px;
+width: 50px;}
+;
+
+
