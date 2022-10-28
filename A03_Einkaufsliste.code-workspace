@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "A03_Einkaufsliste"
+		},
+		{
+			"path": "A02_EventInsepctor"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "A03_Einkaufsliste"
+	}
+}
