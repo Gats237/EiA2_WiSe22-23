@@ -11,11 +11,11 @@ namespace L04_Datastructur{
  //console.log("start");
 
 export interface ItemAdded {
-     Eintragen:string;
-     Menge: number;
-     Notiz: string;
-     checkbox1: boolean;
-     date: string;
+        Eintragen:string;
+        Menge: number;
+        Notiz: string;
+        checkbox1: boolean;
+        date: string;
     };
 
 export interface Data { 
@@ -23,8 +23,8 @@ export interface Data {
 }
 
 export let data: Data = {
-    0:[
+    1:[
         {Eintragen: "Brot", Menge:1, Notiz: "Bauerbrot", checkbox1: false, date: "27.10.22"}
-    ]
+    ],
 };
 }

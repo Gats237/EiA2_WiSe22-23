@@ -11,9 +11,9 @@ var L04_Datastructur;
     //console.log("start");
     ;
     L04_Datastructur.data = {
-        0: [
+        1: [
             { Eintragen: "Brot", Menge: 1, Notiz: "Bauerbrot", checkbox1: false, date: "27.10.22" }
-        ]
+        ],
     };
 })(L04_Datastructur || (L04_Datastructur = {}));
 //# sourceMappingURL=L04_Interface.js.map
