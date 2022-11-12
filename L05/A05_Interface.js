@@ -4,7 +4,7 @@ Aufgabe: Aufgabe 3 Einkaufsliste
 Name: Henning Pils
 Matrikel: 269355
 Datum: 27.10.2022
-Quellen: Robert Schindler, Yannik König, Jonas Atzenhofer
+Quellen: Robert Schindler, Yannik König!!, Jonas Atzenhofer
 */
 var A05_Einkaufsliste_Client;
 (function (A05_Einkaufsliste_Client) {
