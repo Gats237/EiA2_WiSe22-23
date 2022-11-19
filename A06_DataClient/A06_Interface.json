@@ -1,0 +1,9 @@
+
+ { 1: [
+        {"Eintragen": "Brot", 
+        "Menge":"1", 
+        "Notiz": "Bauerbrot", 
+        "checkbox1": "false", 
+        "date": "27.10.22"}
+    ];
+}
