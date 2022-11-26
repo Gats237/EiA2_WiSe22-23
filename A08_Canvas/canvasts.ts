@@ -30,12 +30,13 @@ namespace A08_Canvas {
     let d3: number= Math.random() * 1600;
     let d4: number= Math.random() * 1600;
     let gradient1 = ctx.createLinearGradient(d1,d2,d3,d4);
-    let e1: number= Math.random() * 1;
-    let e2: number= Math.random() * 1;
+    let e1: number= Math.random() * 0.1;
+    let e2: number= Math.random() * 0.5;
     let e3: number= Math.random() * 1;
-    gradient1.addColorStop(e1, "green");
-    gradient1.addColorStop(e2,"grey");
-    gradient1.addColorStop(e3, "green");
+
+    gradient1.addColorStop(e1, "black");
+    gradient1.addColorStop(e2 ,"green");
+    gradient1.addColorStop(e3, "grey");
     ctx.beginPath();
     ctx.fillStyle="gradient1"
     let f1: number= Math.random() * 1600;
@@ -62,7 +63,7 @@ namespace A08_Canvas {
       circle.strokeStyle = gradient;
       circle.lineWidth = 1;
 
-      for (let i: number = 0; i < 10; i++) {
+      for (let i: number = 0; i < 60 i++) {
 
          let size: number = Math.random()*100;
 
@@ -116,12 +117,12 @@ namespace A08_Canvas {
       let triangle: CanvasRenderingContext2D= <CanvasRenderingContext2D> canvas.getContext("2d");
       for (let i: number = 0; i < 7; i++) {
         
-         let start: number=Math.random() * 1600;
-         let spunkt: number=Math.random() * 1600;
-         let startB: number=Math.random() * 1600;
-         let spunktB: number=Math.random() * 1600;
-         let startC: number=Math.random() * 1600;
-         let spunktC: number=Math.random() * 1600;
+         let start: number=Math.random() * 1000;
+         let spunkt: number=Math.random() * 1000;
+         let startB: number=Math.random() * 1000;
+         let spunktB: number=Math.random() * 1000;
+         let startC: number=Math.random() * 1000;
+         let spunktC: number=Math.random() * 1000;
 
          triangle.beginPath();
          triangle.lineCap="square";
@@ -129,7 +130,7 @@ namespace A08_Canvas {
          triangle.lineTo(startB,spunktB);
          triangle.lineTo(startC,spunktC);
          triangle.fill();
-         triangle.fillStyle= "black";
+         triangle.fillStyle= "gradiant1";
          triangle.stroke();
       }
 

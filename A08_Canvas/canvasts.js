@@ -26,12 +26,12 @@ var A08_Canvas;
         let d3 = Math.random() * 1600;
         let d4 = Math.random() * 1600;
         let gradient1 = ctx.createLinearGradient(d1, d2, d3, d4);
-        let e1 = Math.random() * 1;
-        let e2 = Math.random() * 1;
+        let e1 = Math.random() * 0.1;
+        let e2 = Math.random() * 0.5;
         let e3 = Math.random() * 1;
-        gradient1.addColorStop(e1, "green");
-        gradient1.addColorStop(e2, "grey");
-        gradient1.addColorStop(e3, "green");
+        gradient1.addColorStop(e1, "black");
+        gradient1.addColorStop(e2, "green");
+        gradient1.addColorStop(e3, "grey");
         ctx.beginPath();
         ctx.fillStyle = "gradient1";
         let f1 = Math.random() * 1600;
@@ -53,7 +53,7 @@ var A08_Canvas;
         // Fill with gradient
         circle.strokeStyle = gradient;
         circle.lineWidth = 1;
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 60; i++) {
             let size = Math.random() * 100;
             let x = Math.random() * circle.canvas.width;
             let y = Math.random() * circle.canvas.height;
@@ -96,19 +96,19 @@ var A08_Canvas;
         console.log("Hallop");
         let triangle = canvas.getContext("2d");
         for (let i = 0; i < 7; i++) {
-            let start = Math.random() * 1600;
-            let spunkt = Math.random() * 1600;
-            let startB = Math.random() * 1600;
-            let spunktB = Math.random() * 1600;
-            let startC = Math.random() * 1600;
-            let spunktC = Math.random() * 1600;
+            let start = Math.random() * 1000;
+            let spunkt = Math.random() * 1000;
+            let startB = Math.random() * 1000;
+            let spunktB = Math.random() * 1000;
+            let startC = Math.random() * 1000;
+            let spunktC = Math.random() * 1000;
             triangle.beginPath();
             triangle.lineCap = "square";
             triangle.moveTo(start, spunkt);
             triangle.lineTo(startB, spunktB);
             triangle.lineTo(startC, spunktC);
             triangle.fill();
-            triangle.fillStyle = "black";
+            triangle.fillStyle = "gradiant1";
             triangle.stroke();
         }
     }
