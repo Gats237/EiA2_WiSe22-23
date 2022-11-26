@@ -19,13 +19,26 @@ var A08_Canvas;
         let ctx = canvas.getContext("2d");
         canvas.height = window.innerHeight;
         canvas.width = window.innerWidth;
-        let gradient1 = ctx.createLinearGradient(0, 700, 900, 1600);
-        gradient1.addColorStop("0", "white");
-        gradient1.addColorStop("0.5", "grey");
-        gradient1.addColorStop("1.0", "green");
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = "high";
+        let d1 = Math.random() * 1600;
+        let d2 = Math.random() * 1600;
+        let d3 = Math.random() * 1600;
+        let d4 = Math.random() * 1600;
+        let gradient1 = ctx.createLinearGradient(d1, d2, d3, d4);
+        let e1 = Math.random() * 1;
+        let e2 = Math.random() * 1;
+        let e3 = Math.random() * 1;
+        gradient1.addColorStop(e1, "green");
+        gradient1.addColorStop(e2, "grey");
+        gradient1.addColorStop(e3, "green");
         ctx.beginPath();
         ctx.fillStyle = "gradient1";
-        ctx.fillRect(0, 0, 1600, 1600);
+        let f1 = Math.random() * 1600;
+        let f2 = Math.random() * 1600;
+        let f3 = Math.random() * 1600;
+        let f4 = Math.random() * 1600;
+        ctx.fillRect(f1, f2, f3, f4);
         ctx.stroke();
         Circles();
         triangle();
@@ -33,14 +46,14 @@ var A08_Canvas;
     }
     function Circles() {
         let circle = canvas.getContext("2d");
-        let gradient = circle.createLinearGradient(0, 200, 900, 1200);
+        let gradient = circle.createLinearGradient(0, 200, 750, 1100);
         gradient.addColorStop("0", "black");
         gradient.addColorStop("0.5", "green");
-        gradient.addColorStop("1.0", "black");
+        gradient.addColorStop("1.0", "white");
         // Fill with gradient
         circle.strokeStyle = gradient;
         circle.lineWidth = 1;
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < 10; i++) {
             let size = Math.random() * 100;
             let x = Math.random() * circle.canvas.width;
             let y = Math.random() * circle.canvas.height;
@@ -82,7 +95,7 @@ var A08_Canvas;
     function triangle() {
         console.log("Hallop");
         let triangle = canvas.getContext("2d");
-        for (let i = 0; i < 12; i++) {
+        for (let i = 0; i < 7; i++) {
             let start = Math.random() * 1600;
             let spunkt = Math.random() * 1600;
             let startB = Math.random() * 1600;

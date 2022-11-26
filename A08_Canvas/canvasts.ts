@@ -23,13 +23,26 @@ namespace A08_Canvas {
     let ctx: CanvasRenderingContext2D =canvas.getContext("2d");
     canvas.height= window.innerHeight;
     canvas.width= window.innerWidth;
-    let gradient1 = ctx.createLinearGradient(0,700,900,1600);
-    gradient1.addColorStop("0", "white");
-    gradient1.addColorStop("0.5" ,"grey");
-    gradient1.addColorStop("1.0", "green");
+    ctx.imageSmoothingEnabled= true;
+    ctx.imageSmoothingQuality="high";
+    let d1: number= Math.random() * 1600;
+    let d2: number= Math.random() * 1600;
+    let d3: number= Math.random() * 1600;
+    let d4: number= Math.random() * 1600;
+    let gradient1 = ctx.createLinearGradient(d1,d2,d3,d4);
+    let e1: number= Math.random() * 1;
+    let e2: number= Math.random() * 1;
+    let e3: number= Math.random() * 1;
+    gradient1.addColorStop(e1, "green");
+    gradient1.addColorStop(e2,"grey");
+    gradient1.addColorStop(e3, "green");
     ctx.beginPath();
     ctx.fillStyle="gradient1"
-    ctx.fillRect(0,0,1600,1600);
+    let f1: number= Math.random() * 1600;
+    let f2: number= Math.random() * 1600;
+    let f3: number= Math.random() * 1600;
+    let f4: number= Math.random() * 1600;
+    ctx.fillRect(f1,f2,f3,f4);
     ctx.stroke();
     Circles();
     triangle();
@@ -40,16 +53,16 @@ namespace A08_Canvas {
    function Circles(){
         
       let circle: CanvasRenderingContext2D = <CanvasRenderingContext2D>canvas.getContext("2d");
-      let gradient = circle.createLinearGradient(0,200,900,1200);
+      let gradient = circle.createLinearGradient(0,200,750,1100);
       gradient.addColorStop("0", "black");
       gradient.addColorStop("0.5" ,"green");
-      gradient.addColorStop("1.0", "black");
+      gradient.addColorStop("1.0", "white");
 
       // Fill with gradient
       circle.strokeStyle = gradient;
       circle.lineWidth = 1;
 
-      for (let i: number = 0; i < 15; i++) {
+      for (let i: number = 0; i < 10; i++) {
 
          let size: number = Math.random()*100;
 
@@ -101,7 +114,7 @@ namespace A08_Canvas {
    function triangle() {
       console.log("Hallop")
       let triangle: CanvasRenderingContext2D= <CanvasRenderingContext2D> canvas.getContext("2d");
-      for (let i: number = 0; i < 12; i++) {
+      for (let i: number = 0; i < 7; i++) {
         
          let start: number=Math.random() * 1600;
          let spunkt: number=Math.random() * 1600;
