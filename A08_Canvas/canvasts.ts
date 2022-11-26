@@ -59,17 +59,17 @@ namespace A08_Canvas {
       let gradient = circle.createLinearGradient(0,200,750,1100);
       circle.imageSmoothingEnabled= true;
       circle.imageSmoothingQuality="high";
-      gradient.addColorStop("0", "black");
+      gradient.addColorStop("0", "white");
       gradient.addColorStop("0.5" ,"green");
-      gradient.addColorStop("1.0", "white");
+      gradient.addColorStop("1.0", "black");
 
       // Fill with gradient
       circle.strokeStyle = gradient;
       circle.lineWidth = 2;
 
-      for (let i: number = 0; i < 15 i++) {
+      for (let i: number = 0; i < 10 i++) {
 
-         let size: number = Math.random()*1500;
+         let size: number = Math.random()*700;
 
 
              let x: number = Math.random() * circle.canvas.width;
@@ -95,15 +95,18 @@ namespace A08_Canvas {
       let lines: CanvasRenderingContext2D = <CanvasRenderingContext2D>canvas.getContext("2d");
       lines.imageSmoothingEnabled= true;
       lines.imageSmoothingQuality="high";
-      
+      let gradient2 = lines.createLinearGradient(0,100,500,1600);
+      gradient2.addColorStop("0", "white");
+      gradient2.addColorStop("0.5" ,"green");
+      gradient2.addColorStop("1.0", "black");
 
       for (let i: number = 0; i < 6; i++) {
          let a: number= Math.random() * 1600;
          let b: number= Math.random() * 1100;
          let c: number= Math.random() * 1600;
-         let d: number= Math.random() * 800;
-         let e: number= Math.random() * 900;
-         let f: number= Math.random() * 800;
+         let d: number= Math.random() * 1600;
+         let e: number= Math.random() * 1600;
+         let f: number= Math.random() * 1600;
 
          lines.beginPath();
          lines.moveTo(1600,1600);
@@ -114,7 +117,7 @@ namespace A08_Canvas {
          lines.lineTo(0, 0)
          lines.shadowBlur=40;
          lines.shadowColor="black";
-         lines.strokeStyle="black";
+         lines.strokeStyle="gradient2";
          lines.stroke();};
    }
 
@@ -125,9 +128,9 @@ namespace A08_Canvas {
       triangle.imageSmoothingQuality="high";
       let gradient2 = triangle.createLinearGradient(0,600,1200,1600);
       gradient2.addColorStop("0", "white");
-      gradient2.addColorStop("0.5" ,"green");
+      gradient2.addColorStop("0.7" ,"green");
       gradient2.addColorStop("1.0", "black");
-      for (let i: number = 0; i < 3; i++) {
+      for (let i: number = 0; i < 6; i++) {
         
          let start: number=Math.random() * 800;
          let spunkt: number=Math.random() * 800;
@@ -142,7 +145,7 @@ namespace A08_Canvas {
          triangle.lineTo(startB,spunktB);
          triangle.lineTo(startC,spunktC);
          triangle.fill();
-         triangle.fillStyle= "gradiant1";
+         triangle.fillStyle= "gradiant2";
          triangle.strokeStyle="gradiant2";
          triangle.stroke();
       }

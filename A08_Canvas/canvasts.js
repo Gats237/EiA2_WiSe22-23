@@ -49,14 +49,14 @@ var A08_Canvas;
         let gradient = circle.createLinearGradient(0, 200, 750, 1100);
         circle.imageSmoothingEnabled = true;
         circle.imageSmoothingQuality = "high";
-        gradient.addColorStop("0", "black");
+        gradient.addColorStop("0", "white");
         gradient.addColorStop("0.5", "green");
-        gradient.addColorStop("1.0", "white");
+        gradient.addColorStop("1.0", "black");
         // Fill with gradient
         circle.strokeStyle = gradient;
         circle.lineWidth = 2;
-        for (let i = 0; i < 15; i++) {
-            let size = Math.random() * 1500;
+        for (let i = 0; i < 10; i++) {
+            let size = Math.random() * 700;
             let x = Math.random() * circle.canvas.width;
             let y = Math.random() * circle.canvas.height;
             let z = Math.random() * 2;
@@ -76,13 +76,17 @@ var A08_Canvas;
         let lines = canvas.getContext("2d");
         lines.imageSmoothingEnabled = true;
         lines.imageSmoothingQuality = "high";
+        let gradient2 = lines.createLinearGradient(0, 100, 500, 1600);
+        gradient2.addColorStop("0", "white");
+        gradient2.addColorStop("0.5", "green");
+        gradient2.addColorStop("1.0", "black");
         for (let i = 0; i < 6; i++) {
             let a = Math.random() * 1600;
             let b = Math.random() * 1100;
             let c = Math.random() * 1600;
-            let d = Math.random() * 800;
-            let e = Math.random() * 900;
-            let f = Math.random() * 800;
+            let d = Math.random() * 1600;
+            let e = Math.random() * 1600;
+            let f = Math.random() * 1600;
             lines.beginPath();
             lines.moveTo(1600, 1600);
             lines.lineTo(a, b);
@@ -92,7 +96,7 @@ var A08_Canvas;
             lines.lineTo(0, 0);
             lines.shadowBlur = 40;
             lines.shadowColor = "black";
-            lines.strokeStyle = "black";
+            lines.strokeStyle = "gradient2";
             lines.stroke();
         }
         ;
@@ -104,9 +108,9 @@ var A08_Canvas;
         triangle.imageSmoothingQuality = "high";
         let gradient2 = triangle.createLinearGradient(0, 600, 1200, 1600);
         gradient2.addColorStop("0", "white");
-        gradient2.addColorStop("0.5", "green");
+        gradient2.addColorStop("0.7", "green");
         gradient2.addColorStop("1.0", "black");
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 6; i++) {
             let start = Math.random() * 800;
             let spunkt = Math.random() * 800;
             let startB = Math.random() * 800;
@@ -119,7 +123,7 @@ var A08_Canvas;
             triangle.lineTo(startB, spunktB);
             triangle.lineTo(startC, spunktC);
             triangle.fill();
-            triangle.fillStyle = "gradiant1";
+            triangle.fillStyle = "gradiant2";
             triangle.strokeStyle = "gradiant2";
             triangle.stroke();
         }
