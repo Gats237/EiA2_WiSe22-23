@@ -55,8 +55,8 @@ var A08_Canvas;
         // Fill with gradient
         circle.strokeStyle = gradient;
         circle.lineWidth = 2;
-        for (let i = 0; i < 25; i++) {
-            let size = Math.random() * 150;
+        for (let i = 0; i < 15; i++) {
+            let size = Math.random() * 1500;
             let x = Math.random() * circle.canvas.width;
             let y = Math.random() * circle.canvas.height;
             let z = Math.random() * 2;
@@ -76,11 +76,7 @@ var A08_Canvas;
         let lines = canvas.getContext("2d");
         lines.imageSmoothingEnabled = true;
         lines.imageSmoothingQuality = "high";
-        let gradient2 = lines.createLinearGradient(0, 200, 400, 900);
-        gradient2.addColorStop("0", "white");
-        gradient2.addColorStop("0.5", "green");
-        gradient2.addColorStop("1.0", "black");
-        for (let i = 0; i < 8; i++) {
+        for (let i = 0; i < 6; i++) {
             let a = Math.random() * 1600;
             let b = Math.random() * 1100;
             let c = Math.random() * 1600;
@@ -96,7 +92,7 @@ var A08_Canvas;
             lines.lineTo(0, 0);
             lines.shadowBlur = 40;
             lines.shadowColor = "black";
-            lines.strokeStyle = "gradient2";
+            lines.strokeStyle = "black";
             lines.stroke();
         }
         ;
@@ -106,7 +102,11 @@ var A08_Canvas;
         let triangle = canvas.getContext("2d");
         triangle.imageSmoothingEnabled = true;
         triangle.imageSmoothingQuality = "high";
-        for (let i = 0; i < 7; i++) {
+        let gradient2 = triangle.createLinearGradient(0, 600, 1200, 1600);
+        gradient2.addColorStop("0", "white");
+        gradient2.addColorStop("0.5", "green");
+        gradient2.addColorStop("1.0", "black");
+        for (let i = 0; i < 3; i++) {
             let start = Math.random() * 800;
             let spunkt = Math.random() * 800;
             let startB = Math.random() * 800;
@@ -120,7 +120,7 @@ var A08_Canvas;
             triangle.lineTo(startC, spunktC);
             triangle.fill();
             triangle.fillStyle = "gradiant1";
-            triangle.strokeStyle = "gradiant";
+            triangle.strokeStyle = "gradiant2";
             triangle.stroke();
         }
     }
