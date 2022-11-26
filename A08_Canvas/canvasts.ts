@@ -11,6 +11,8 @@ namespace A08_Canvas {
     //Eventlistener
     window.addEventListener("load", handleLoad);
     window.addEventListener("mousedown", reload)
+
+
   
    //refresh Code
    function reload(_event: Event){ handleLoad();}
@@ -55,17 +57,19 @@ namespace A08_Canvas {
         
       let circle: CanvasRenderingContext2D = <CanvasRenderingContext2D>canvas.getContext("2d");
       let gradient = circle.createLinearGradient(0,200,750,1100);
+      circle.imageSmoothingEnabled= true;
+      circle.imageSmoothingQuality="high";
       gradient.addColorStop("0", "black");
       gradient.addColorStop("0.5" ,"green");
       gradient.addColorStop("1.0", "white");
 
       // Fill with gradient
       circle.strokeStyle = gradient;
-      circle.lineWidth = 1;
+      circle.lineWidth = 2;
 
-      for (let i: number = 0; i < 60 i++) {
+      for (let i: number = 0; i < 25 i++) {
 
-         let size: number = Math.random()*100;
+         let size: number = Math.random()*150;
 
 
              let x: number = Math.random() * circle.canvas.width;
@@ -89,8 +93,14 @@ namespace A08_Canvas {
 
    function lines(){
       let lines: CanvasRenderingContext2D = <CanvasRenderingContext2D>canvas.getContext("2d");
+      lines.imageSmoothingEnabled= true;
+      lines.imageSmoothingQuality="high";
+      let gradient2 = lines.createLinearGradient(0,200,400,900);
+      gradient2.addColorStop("0", "white");
+      gradient2.addColorStop("0.5" ,"green");
+      gradient2.addColorStop("1.0", "black");
 
-      for (let i: number = 0; i < 10; i++) {
+      for (let i: number = 0; i < 8; i++) {
          let a: number= Math.random() * 1600;
          let b: number= Math.random() * 1100;
          let c: number= Math.random() * 1600;
@@ -99,8 +109,6 @@ namespace A08_Canvas {
          let f: number= Math.random() * 800;
 
          lines.beginPath();
-         lines
-         
          lines.moveTo(1600,1600);
          lines.lineTo(a,b);
          lines.lineTo(e,f);
@@ -109,17 +117,20 @@ namespace A08_Canvas {
          lines.lineTo(0, 0)
          lines.shadowBlur=40;
          lines.shadowColor="black";
-         lines.stroke();}
+         lines.strokeStyle="gradient2"
+         lines.stroke();};
    }
 
    function triangle() {
-      console.log("Hallop")
+      console.log("SCFREIBURG")
       let triangle: CanvasRenderingContext2D= <CanvasRenderingContext2D> canvas.getContext("2d");
+      triangle.imageSmoothingEnabled= true;
+      triangle.imageSmoothingQuality="high";
       for (let i: number = 0; i < 7; i++) {
         
-         let start: number=Math.random() * 1000;
-         let spunkt: number=Math.random() * 1000;
-         let startB: number=Math.random() * 1000;
+         let start: number=Math.random() * 800;
+         let spunkt: number=Math.random() * 800;
+         let startB: number=Math.random() * 800;
          let spunktB: number=Math.random() * 1000;
          let startC: number=Math.random() * 1000;
          let spunktC: number=Math.random() * 1000;
@@ -131,6 +142,7 @@ namespace A08_Canvas {
          triangle.lineTo(startC,spunktC);
          triangle.fill();
          triangle.fillStyle= "gradiant1";
+         triangle.strokeStyle="gradiant";
          triangle.stroke();
       }
 
