@@ -1,4 +1,11 @@
 "use strict";
+/*
+Aufgabe: Aufgabe 8 Canvas
+Name: Henning Pils
+Matrikel: 269355
+Datum: 27.10.2022
+Quellen: W3 Schhols, Youtube
+*/
 var A08_Canvas;
 (function (A08_Canvas) {
     //Eventlistener
@@ -12,6 +19,14 @@ var A08_Canvas;
         let ctx = canvas.getContext("2d");
         canvas.height = window.innerHeight;
         canvas.width = window.innerWidth;
+        let gradient1 = ctx.createLinearGradient(0, 700, 900, 1600);
+        gradient1.addColorStop("0", "white");
+        gradient1.addColorStop("0.5", "grey");
+        gradient1.addColorStop("1.0", "green");
+        ctx.beginPath();
+        ctx.fillStyle = "gradient1";
+        ctx.fillRect(0, 0, 1600, 1600);
+        ctx.stroke();
         Circles();
         triangle();
         lines();
@@ -67,7 +82,7 @@ var A08_Canvas;
     function triangle() {
         console.log("Hallop");
         let triangle = canvas.getContext("2d");
-        for (let i = 0; i < 7; i++) {
+        for (let i = 0; i < 12; i++) {
             let start = Math.random() * 1600;
             let spunkt = Math.random() * 1600;
             let startB = Math.random() * 1600;
