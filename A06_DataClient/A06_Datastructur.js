@@ -14,11 +14,16 @@ var ShoppingList_06;
     let elementCounter = 0;
     let date = new Date();
     let dateNoTime = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear();
-    let url = "https://webuser.hs-furtwangen.de/~pilshenn/Database/";
+    let url = "https://webuser.hs-furtwangen.de/~pilshenn/Database/dataList.json";
     window.addEventListener("load", handleLoad);
     async function handleLoad(_event) {
         let addButton = document.querySelector("button#add");
         addButton.addEventListener("click", itemAdd);
+        document.addEventListener("keypress", function (event) {
+            if (event.key == "Enter") {
+                itemAdd();
+            }
+        });
         let response = await fetch(url + "?command=find&collection=dataList");
         let item = await response.text();
         let data = JSON.parse(item);
@@ -121,7 +126,7 @@ var ShoppingList_06;
         _element.setAttribute("class", "lister");
         _element.setAttribute("id", "lister" + itemNumber);
     }
-    function createInput(_element, _parent) {
+    async function createInput(_element, _parent) {
         _parent.appendChild(_element);
         _element.setAttribute("class", "bought");
         _element.setAttribute("id", "bought" + itemNumber);
@@ -134,19 +139,39 @@ var ShoppingList_06;
         _element.setAttribute("id", "ItemData" + itemNumber);
     }
     ;
-    function itemBought(_event) {
+    async function itemBought(_event) {
         let trigger = _event.target.id;
         let triggerNum = trigger.replace(/\D/g, "");
-        let identifier = parseInt(triggerNum);
-        //to be continued
+        let identifyer = parseInt(triggerNum);
+        let response0 = await fetch(url + "?command=find&collection=dataList");
+        let itemResponse = await response0.text();
+        let data = JSON.parse(itemResponse);
+        let keys = Object.keys(data.data);
+        let id = keys[identifyer];
+        let query = new URLSearchParams();
+        query.set("command", "update");
+        query.set("collection", "dataList");
+        query.set("id", id);
+        query.set("data", "{'bought': true}");
+        let response1 = await fetch(url + "?" + query.toString());
+        let responseText = await response1.text();
+        console.log(responseText);
+        if (responseText.includes("success")) {
+            alert("Item marked as bought!");
+        }
+        else {
+            alert("Error! Try again!");
+        }
     }
+    //Dass "bought" auch im Dokument beim Aufbau ausgelesen und dargestellt wird habe ich auch 
+    //nach ewiglangem Googlen und Ausprobieren nicht hinbekommen
     function editItem(_event) {
         let trigger = _event.target.id;
         let triggerNum = trigger.replace(/\D/g, "");
-        let identifier = parseInt(triggerNum);
+        let identifyer = parseInt(triggerNum);
         let values = [];
-        let buttonEdit = document.getElementById("edit" + identifier);
-        let listEdit = document.getElementById("ItemData" + identifier);
+        let buttonEdit = document.getElementById("edit" + identifyer);
+        let listEdit = document.getElementById("ItemData" + identifyer);
         buttonEdit.removeEventListener("click", editItem);
         buttonEdit.addEventListener("click", saveChanges);
         buttonEdit.innerHTML = "save";
@@ -163,10 +188,9 @@ var ShoppingList_06;
         _listEdit.removeAttribute("border-style");
         let form = document.createElement("form");
         _listEdit.appendChild(form);
-        let formData = new FormData;
         let inputField0 = document.createElement("input");
         inputField0.setAttribute("type", "text");
-        inputField0.setAttribute("name", "item");
+        inputField0.setAttribute("name", "newItem");
         inputField0.setAttribute("value", _values[0]);
         form.appendChild(inputField0);
         let inputField1 = document.createElement("input");
@@ -187,12 +211,12 @@ var ShoppingList_06;
     async function saveChanges(_event) {
         let trigger = _event.target.id;
         let triggerNum = trigger.replace(/\D/g, "");
-        let identifier = parseInt(triggerNum);
-        let buttonEdit = document.getElementById("edit" + identifier);
-        let listEdit = document.getElementById("ItemData" + identifier);
+        let identifyer = parseInt(triggerNum);
+        let buttonEdit = document.getElementById("edit" + identifyer);
+        let listEdit = document.getElementById("ItemData" + identifyer);
         let formData = new FormData(listEdit.querySelector("form"));
         let form = listEdit.querySelector("form");
-        let item = formData.get("item");
+        let item = formData.get("newItem");
         let amount = formData.get("amount");
         let comment = formData.get("comment");
         let date = formData.get("date");
@@ -216,7 +240,7 @@ var ShoppingList_06;
         let itemResponse = await response0.text();
         let data = JSON.parse(itemResponse);
         let keys = Object.keys(data.data);
-        let id = keys[identifier];
+        let id = keys[identifyer];
         let query = new URLSearchParams();
         query.set("command", "update");
         query.set("collection", "dataList");
@@ -224,7 +248,7 @@ var ShoppingList_06;
         query.set("data", JSON.stringify(json));
         let response1 = await fetch(url + "?" + query.toString());
         let responseText = await response1.text();
-        console.log(responseText);
+        console.log(query);
         if (responseText.includes("success")) {
             alert("Item edited!");
         }
@@ -235,17 +259,17 @@ var ShoppingList_06;
     async function deleteItem(_event) {
         let trigger = _event.target.id;
         let triggerNum = trigger.replace(/\D/g, "");
-        let identifier = parseInt(triggerNum);
+        let identifyer = parseInt(triggerNum);
         let list = document.getElementById("list");
-        let remIt = document.getElementById("lister" + identifier);
+        let remIt = document.getElementById("lister" + identifyer);
         list.removeChild(remIt);
         let response0 = await fetch(url + "?command=find&collection=dataList");
         let item = await response0.text();
         let data = JSON.parse(item);
         let keys = Object.keys(data.data);
         console.log(keys);
-        console.log(identifier);
-        let id = keys[identifier];
+        console.log(identifyer);
+        let id = keys[identifyer];
         let query = new URLSearchParams();
         query.set("command", "delete");
         query.set("collection", "dataList");

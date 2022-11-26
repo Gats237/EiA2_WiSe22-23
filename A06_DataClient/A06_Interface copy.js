@@ -1,6 +1,6 @@
 "use strict";
 /*
-Aufgabe: Aufgabe 3 Einkaufsliste
+Aufgabe: Aufgabe 6 Einkaufsliste
 Name: Henning Pils
 Matrikel: 269355
 Datum: 27.10.2022

@@ -9,16 +9,12 @@ zusammen gearbeitet Jonas Atzenhofer.Robert Schindler
 */
 
 namespace ShoppingList_06 {
+  
     let itemNumber: number = 0;
     let elementCounter: number = 0; 
     let date: Date = new Date(); 
-
-
     let dateNoTime: string = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear(); 
-    let url: string = "https://webuser.hs-furtwangen.de/~pilshenn/Database/"; 
-
-
-
+    let url: string = "https://webuser.hs-furtwangen.de/~pilshenn/Database/dataList.json";
     window.addEventListener("load", handleLoad);
 
     interface Data {
@@ -40,9 +36,13 @@ namespace ShoppingList_06 {
 
     async function handleLoad(_event: Event): Promise<void> {
 
-        let addButton: HTMLButtonElement = document.querySelector("button#add");
+        let addButton: HTMLButtonElement = document.querySelector("button#add")!;
         addButton.addEventListener("click", itemAdd);
-        
+        document.addEventListener("keypress", function(event: KeyboardEvent): void {
+            if (event.key == "Enter") {
+                itemAdd(); 
+            }
+        });  
 
 
         let response: Response = await fetch(url + "?command=find&collection=dataList"); 
@@ -64,13 +64,13 @@ namespace ShoppingList_06 {
         let newItem: string = text[0];
         let amount: number = parseInt(text[1]);
         let comment: string = text[2];
-        let list: HTMLElement = document.getElementById("list");
+        let list: HTMLElement = document.getElementById("list")!;
         let newDiv: HTMLDivElement = document.createElement("div");
         let newInput: HTMLInputElement = document.createElement("input");
         let divItemData: HTMLDivElement = document.createElement("div");
 
 
-        createInput(newInput, newDiv); 
+        createInput(newInput, newDiv,); 
 
         createDiv(newDiv); 
 
@@ -94,11 +94,11 @@ namespace ShoppingList_06 {
         }
     }
     async function itemAdd(): Promise<void> {
-        let formData: FormData = new FormData(document.querySelector("form"));
-        let newItem: FormDataEntryValue =<FormDataEntryValue> formData.get("newItem");
-        let amount: FormDataEntryValue = <FormDataEntryValue>  formData.get("amount");
-        let comment: FormDataEntryValue = <FormDataEntryValue> formData.get("comment");
-        let list: HTMLElement =  document.getElementById("list");
+        let formData: FormData = new FormData(document.querySelector("form")!);
+        let newItem: FormDataEntryValue = formData.get("newItem")!;
+        let amount: FormDataEntryValue = formData.get("amount")!;
+        let comment: FormDataEntryValue = formData.get("comment")!;
+        let list: HTMLElement = document.getElementById("list")!;
         let newDiv: HTMLDivElement = document.createElement("div");
         let newInput: HTMLInputElement = document.createElement("input");
         let divItemData: HTMLDivElement = document.createElement("div");
@@ -188,13 +188,13 @@ namespace ShoppingList_06 {
         _element.setAttribute("id", "lister" + itemNumber);
     }
 
-    function createInput(_element: HTMLElement, _parent: HTMLElement): void {
+    async function createInput(_element: HTMLInputElement, _parent: HTMLElement): Promise<void> {
         _parent.appendChild(_element);
         _element.setAttribute("class", "bought");
         _element.setAttribute("id", "bought" + itemNumber);
         _element.setAttribute("type", "checkbox");
         _element.addEventListener("change", itemBought);
-    }
+}
 
     function createItemDiv(_element: HTMLElement, _parent: HTMLElement): void {
         _parent.appendChild(_element);
@@ -202,21 +202,48 @@ namespace ShoppingList_06 {
         _element.setAttribute("id", "ItemData" + itemNumber);
     }; 
     
-    function itemBought(_event: Event): void {
+    async function itemBought(_event: Event): Promise<void> {
         let trigger: string = (_event.target as HTMLInputElement).id;
         let triggerNum: string = trigger.replace(/\D/g, "");
-        let identifier: number = parseInt(triggerNum);
-        //to be continued
+        let identifyer: number = parseInt(triggerNum);
+
+        let response0: Response = await fetch(url + "?command=find&collection=dataList"); 
+        let itemResponse: string = await response0.text();
+        let data: ReturnedJSON = JSON.parse(itemResponse);
+
+        let keys: string[] = Object.keys(data.data);
+
+        let id: string = keys[identifyer];
+
+        let query: URLSearchParams = new URLSearchParams(); 
+        query.set("command", "update");
+        query.set("collection", "dataList");
+        query.set("id", id); 
+        query.set("data", "{'bought': true}"); 
+        let response1: Response = await fetch(url + "?" + query.toString());
+        let responseText: string = await response1.text();
+        console.log(responseText); 
+
+        if (responseText.includes("success")) {
+            alert("Item marked as bought!"); 
+        }
+        else {
+            alert("Error! Try again!");
+                } 
+        
     }
+
+    //Dass "bought" auch im Dokument beim Aufbau ausgelesen und dargestellt wird habe ich auch 
+    //nach ewiglangem Googlen und Ausprobieren nicht hinbekommen
 
     function editItem(_event: Event): void {
         let trigger: string = (_event.target as HTMLButtonElement).id;
         let triggerNum: string = trigger.replace(/\D/g, "");
-        let identifier: number = parseInt(triggerNum);
+        let identifyer: number = parseInt(triggerNum);
         let values: string[] = []; 
 
-        let buttonEdit: HTMLElement =<HTMLElement> document.getElementById("edit" + identifier);
-        let listEdit: HTMLElement = <HTMLElement> document.getElementById("ItemData" + identifier);  
+        let buttonEdit: HTMLElement = <HTMLElement>document.getElementById("edit" + identifyer);
+        let listEdit: HTMLElement = <HTMLElement>document.getElementById("ItemData" + identifyer);  
 
         buttonEdit.removeEventListener("click", editItem);
         buttonEdit.addEventListener("click", saveChanges);
@@ -224,7 +251,7 @@ namespace ShoppingList_06 {
         
 
         for (let index: number = 0; index < 4; index++) {
-            let item: HTMLElement = <HTMLElement>listEdit.querySelector("p"); 
+            let item: HTMLElement =<HTMLElement> listEdit.querySelector("p"); 
             let value: string = item.innerHTML; 
             values.push(value); 
             listEdit.removeChild(item); 
@@ -237,10 +264,9 @@ namespace ShoppingList_06 {
         _listEdit.removeAttribute("border-style"); 
         let form: HTMLElement = document.createElement("form");
         _listEdit.appendChild(form); 
-        let formData: FormData = new FormData; 
         let inputField0: HTMLElement = document.createElement("input");
         inputField0.setAttribute("type", "text"); 
-        inputField0.setAttribute("name", "item");
+        inputField0.setAttribute("name", "newItem");
         inputField0.setAttribute("value", _values[0]); 
         form.appendChild(inputField0);
 
@@ -255,7 +281,7 @@ namespace ShoppingList_06 {
         inputField2.setAttribute("value", _values[2]); 
         form.appendChild(inputField2);
         
-        let inputField3: HTMLElement = document.createElement("input");
+        let inputField3: HTMLInputElement = document.createElement("input");
         inputField3.setAttribute("type", "text"); 
         inputField3.setAttribute("name", "date");
         inputField3.setAttribute("value", _values[3]); 
@@ -265,17 +291,17 @@ namespace ShoppingList_06 {
     async function saveChanges(_event: Event): Promise<void> {
         let trigger: string = (_event.target as HTMLButtonElement).id;
         let triggerNum: string = trigger.replace(/\D/g, "");
-        let identifier: number = parseInt(triggerNum);
+        let identifyer: number = parseInt(triggerNum);
 
-        let buttonEdit: HTMLElement = <HTMLElement> document.getElementById("edit" + identifier);
+        let buttonEdit: HTMLElement = document.getElementById("edit" + identifyer)!;
 
-        let listEdit: HTMLElement = <HTMLElement>document.getElementById("ItemData" + identifier);     
-        let formData: FormData = new FormData(listEdit.querySelector("form")); 
-        let form: HTMLElement = <HTMLElement> listEdit.querySelector("form"); 
+        let listEdit: HTMLElement = document.getElementById("ItemData" + identifyer)!;     
+        let formData: FormData = new FormData(listEdit.querySelector("form")!); 
+        let form: HTMLElement = listEdit.querySelector("form")!; 
 
-        let item: FormDataEntryValue = <FormDataEntryValue> formData.get("item");
-        let amount: FormDataEntryValue = <FormDataEntryValue> formData.get("amount");
-        let comment: FormDataEntryValue = <FormDataEntryValue> formData.get("comment"); 
+        let item: FormDataEntryValue =<FormDataEntryValue> formData.get("newItem");
+        let amount: FormDataEntryValue =<FormDataEntryValue>  formData.get("amount");
+        let comment: FormDataEntryValue =<FormDataEntryValue>  formData.get("comment"); 
         let date: FormDataEntryValue = <FormDataEntryValue> formData.get("date"); 
         listEdit.removeChild(form); 
         listEdit.removeAttribute("class");
@@ -309,7 +335,7 @@ namespace ShoppingList_06 {
         let data: ReturnedJSON = JSON.parse(itemResponse);
 
         let keys: string[] = Object.keys(data.data);
-        let id: string = keys[identifier];
+        let id: string = keys[identifyer];
 
         let query: URLSearchParams = new URLSearchParams(); 
         query.set("command", "update");
@@ -318,7 +344,7 @@ namespace ShoppingList_06 {
         query.set("data", JSON.stringify(json)); 
         let response1: Response = await fetch(url + "?" + query.toString());
         let responseText: string = await response1.text();
-        console.log(responseText); 
+        console.log(query); 
 
         if (responseText.includes("success")) {
             alert("Item edited!"); 
@@ -333,10 +359,10 @@ namespace ShoppingList_06 {
     async function deleteItem(_event: Event): Promise<void>  {
         let trigger: string = (_event.target as HTMLButtonElement).id; 
         let triggerNum: string = trigger.replace(/\D/g, "");
-        let identifier: number = parseInt(triggerNum);
+        let identifyer: number = parseInt(triggerNum);
 
         let list: HTMLElement =<HTMLElement> document.getElementById("list");
-        let remIt: HTMLElement = <HTMLElement>document.getElementById("lister" + identifier);
+        let remIt: HTMLElement =<HTMLElement> document.getElementById("lister" + identifyer);
         list.removeChild(remIt);
 
         let response0: Response = await fetch(url + "?command=find&collection=dataList"); 
@@ -345,8 +371,8 @@ namespace ShoppingList_06 {
 
         let keys: string[] = Object.keys(data.data);
         console.log(keys); 
-        console.log(identifier); 
-        let id: string = keys[identifier];
+        console.log(identifyer); 
+        let id: string = keys[identifyer];
         let query: URLSearchParams = new URLSearchParams(); 
         query.set("command", "delete");
         query.set("collection", "dataList");

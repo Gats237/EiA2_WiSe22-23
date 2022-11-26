@@ -13,9 +13,9 @@ namespace L03_Einkaufsliste{
  window.addEventListener("load", hndload);
 
     function hndload(_event: Event): void {
-        document.querySelector("#Hinzufügen").addEventListener("click", neu);
-        document.querySelector("#loeschen").addEventListener("click",löschItem);
-        document.querySelector("#check1").addEventListener("click", check);
+        document.querySelector("#Hinzufügen")!.addEventListener("click", neu);
+        document.querySelector("#loeschen")!.addEventListener("click",löschItem);
+        document.querySelector("#check1")!.addEventListener("click", check);
     }
 
     function neu (){

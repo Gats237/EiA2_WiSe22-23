@@ -14,7 +14,7 @@ var A01RandomPoem;
     let Objekte = ["Kräne", "Autos", "Hamburger", "Karl Marx", "Kommunismus", "Deutschland"];
     //Schleife
     for (let index = 7; index >= 1; index--) {
-        console.log(getVerse(Subject, Praedikat, Objekte));
+        console.log(getVerse("Subject", "Praedikat", "Objekte"));
     }
     //Funktion get Verse
     function getVerse(_Subject, _Praedikat, _Objekte) {

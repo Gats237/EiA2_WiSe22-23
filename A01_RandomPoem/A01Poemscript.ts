@@ -15,7 +15,7 @@ let Objekte: string[]= ["Kräne", "Autos", "Hamburger", "Karl Marx", "Kommunismu
 
 //Schleife
 for (let index = 7; index >=1; index--) {
-   console.log(getVerse( Subject , Praedikat, Objekte))
+console.log(getVerse( "Subject" , "Praedikat", "Objekte"))
 }
 
 //Funktion get Verse
