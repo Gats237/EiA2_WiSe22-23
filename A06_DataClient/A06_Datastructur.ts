@@ -11,10 +11,12 @@ zusammen gearbeitet Jonas Atzenhofer.Robert Schindler
 namespace ShoppingList_06 {
   
     let itemNumber: number = 0;
-    let elementCounter: number = 0; 
+    
     let date: Date = new Date(); 
     let dateNoTime: string = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear(); 
     let url: string = "https://webuser.hs-furtwangen.de/~pilshenn/Database/dataList.json";
+   
+   
     window.addEventListener("load", handleLoad);
 
     interface Data {

@@ -6,8 +6,8 @@ Matrikel: 269355
 Datum: 27.10.2022
 Quellen: Robert Schindler, Yannik König!!, Jonas Atzenhofer,
 */
-var A05_Einkaufsliste_Client;
-(function (A05_Einkaufsliste_Client) {
+var A06_Einkaufsliste_Client;
+(function (A06_Einkaufsliste_Client) {
     //console.log("start");
     ;
     A05_Einkaufsliste_Client.data = {
