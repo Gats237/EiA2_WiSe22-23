@@ -10,7 +10,7 @@ namespace A08_Canvas {
   
     //Eventlistener
     window.addEventListener("load", handleLoad);
-    window.addEventListener("mousedown", reload)
+    window.addEventListener("mousedown", reload);
 
 
   
@@ -81,7 +81,7 @@ namespace A08_Canvas {
              circle.arc(x, y, size, p, z * Math.PI);
              circle.shadowBlur = 50;
              circle.shadowOffsetX =80;
-             circle.shadowColor="black"
+             circle.shadowColor="black";
              circle.fillStyle= gradient;
              circle.fill();
              circle.strokeStyle="black";
@@ -151,7 +151,6 @@ namespace A08_Canvas {
       }
 
    }
-
 
 
 
