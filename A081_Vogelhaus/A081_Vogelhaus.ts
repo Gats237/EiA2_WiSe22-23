@@ -57,8 +57,6 @@ namespace A081_Vogelhaus {
             drawSnow({ x:snowposX, y:snowposY });
         }
     }
-   
-
 
     function birds(): void {
 
