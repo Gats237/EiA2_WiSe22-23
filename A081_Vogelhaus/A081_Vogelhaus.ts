@@ -30,7 +30,7 @@ namespace A081_Vogelhaus {
             return;
         ctx = <CanvasRenderingContext2D>canvas.getContext("2d");
         let horizon: number = ctx.canvas.height * 0.6;
-        // canvas.height = window.innerHeight;
+        canvas.height = window.innerHeight;
          canvas.width = window.innerWidth;
 
         drawbackround();

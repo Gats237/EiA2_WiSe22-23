@@ -17,7 +17,7 @@ var A081_Vogelhaus;
             return;
         ctx = canvas.getContext("2d");
         let horizon = ctx.canvas.height * 0.6;
-        // canvas.height = window.innerHeight;
+        canvas.height = window.innerHeight;
         canvas.width = window.innerWidth;
         drawbackround();
         drawSun({ x: 100, y: 75 });
