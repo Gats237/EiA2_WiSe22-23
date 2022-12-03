@@ -78,7 +78,6 @@ namespace A081_Vogelhaus {
             drawTrees({ x: positionbaum, y: stammhöhe });
         }}
 
-    //draw mountains
     function drawbackround(): void {
         console.log("Background");
         let gradient: CanvasGradient = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
