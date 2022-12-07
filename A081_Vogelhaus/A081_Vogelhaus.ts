@@ -29,10 +29,9 @@ namespace A081_Vogelhaus {
         if (!canvas)
             return;
         ctx = <CanvasRenderingContext2D>canvas.getContext("2d");
+       
+        
         let horizon: number = ctx.canvas.height * 0.6;
-        canvas.height = window.innerHeight;
-         canvas.width = window.innerWidth;
-
         drawbackround();
         drawSun({ x: 100, y: 75 });
         drawMountains({ x: 0, y: horizon }, 450, 900, "grey", "white");
@@ -58,10 +57,11 @@ namespace A081_Vogelhaus {
         }
     }
 
+
     function birds(): void {
 
 
-        for (let i: number =0; i < 10; i++) {
+        for (let i: number =0; i < 20; i++) {
             let birdposX: number= ctx.canvas.width*Math.random();
             let birdposY: number= ctx.canvas.height*Math.random();
             drawBirds({ x:birdposX, y:birdposY });

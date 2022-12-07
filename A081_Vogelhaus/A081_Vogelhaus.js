@@ -17,8 +17,6 @@ var A081_Vogelhaus;
             return;
         ctx = canvas.getContext("2d");
         let horizon = ctx.canvas.height * 0.6;
-        canvas.height = window.innerHeight;
-        canvas.width = window.innerWidth;
         drawbackround();
         drawSun({ x: 100, y: 75 });
         drawMountains({ x: 0, y: horizon }, 450, 900, "grey", "white");
@@ -39,7 +37,7 @@ var A081_Vogelhaus;
         }
     }
     function birds() {
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 20; i++) {
             let birdposX = ctx.canvas.width * Math.random();
             let birdposY = ctx.canvas.height * Math.random();
             drawBirds({ x: birdposX, y: birdposY });
@@ -52,7 +50,6 @@ var A081_Vogelhaus;
             drawTrees({ x: positionbaum, y: stammhöhe });
         }
     }
-    //draw mountains
     function drawbackround() {
         console.log("Background");
         let gradient = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
