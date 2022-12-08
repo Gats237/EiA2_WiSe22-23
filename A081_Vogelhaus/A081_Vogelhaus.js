@@ -61,8 +61,8 @@ var A081_Vogelhaus;
     }
     function drawSun(_postion) {
         console.log("Sonne");
-        let r1 = 25;
-        let r2 = 175;
+        let r1 = 100;
+        let r2 = 320;
         let gradient = ctx.createRadialGradient(0, 0, r1, 0, 0, r2);
         gradient.addColorStop(0, "yellow");
         gradient.addColorStop(1, "hsl(353,42%,76%");
@@ -123,7 +123,7 @@ var A081_Vogelhaus;
         ctx.save();
         ctx.translate(_postion.x, _postion.y);
         ctx.beginPath();
-        ctx.arc(0, -250, 15, 0, 2 * Math.PI);
+        ctx.arc(0, -250, 15, 0.5, 2 * Math.PI);
         ctx.fillStyle = " black";
         ctx.fill();
         ctx.restore();

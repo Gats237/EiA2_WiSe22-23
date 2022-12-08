@@ -91,8 +91,8 @@ namespace A081_Vogelhaus {
     function drawSun(_postion: Vector) {
         console.log("Sonne");
 
-        let r1: number = 25;
-        let r2: number = 175;
+        let r1: number = 100;
+        let r2: number = 320;
         let gradient: CanvasGradient = ctx.createRadialGradient(0, 0, r1, 0, 0, r2);
 
         gradient.addColorStop(0, "yellow");
@@ -169,7 +169,7 @@ namespace A081_Vogelhaus {
         ctx.save();
         ctx.translate(_postion.x, _postion.y)
         ctx.beginPath();
-        ctx.arc(0, -250, 15, 0, 2 * Math.PI)
+        ctx.arc(0, -250, 15, 0.5, 2 * Math.PI)
         ctx.fillStyle = " black";
         ctx.fill();
         ctx.restore();
