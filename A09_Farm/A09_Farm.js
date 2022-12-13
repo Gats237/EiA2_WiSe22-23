@@ -76,7 +76,8 @@ var L09_Farm;
         for (let index = 0; index < macDonaldsAnimals.length; index++) {
             let currentAnimal = macDonaldsAnimals[index];
             console.log(currentSupplies);
-            if (index <= 4) {
+            console.log(currentAnimal.lyrics);
+            if (index < 3) {
                 currentAnimal.eat(currentSupplies);
                 // setTimeout(function (): void {
                 refreshAnimalCharacteristics(currentAnimal);
@@ -84,18 +85,14 @@ var L09_Farm;
                 refreshSupplies();
                 // }, 3000);
                 console.log(index);
-                console.log("kleiner 4");
                 console.log(currentAnimal.species, "eats", currentAnimal.nHunger, currentAnimal.food);
-                console.log(currentSupplies);
-                console.log();
             }
             else {
                 currentAnimal.eat(currentSupplies);
                 //index = 0;
                 endFarm();
                 console.log(index);
-                console.log("4+");
-                console.log(currentAnimal.species, currentAnimal.food, currentAnimal.nHunger);
+                console.log(currentAnimal.species, "eats", currentAnimal.nHunger, currentAnimal.food);
                 console.log(currentSupplies);
             }
             //console.log(index);
@@ -146,7 +143,7 @@ var L09_Farm;
     }
     function restartFunction() {
         document.body.innerHTML = "";
-        farmSettings();
+        farm();
     }
 })(L09_Farm || (L09_Farm = {}));
 //# sourceMappingURL=A09_Farm.js.map

@@ -96,8 +96,8 @@ namespace L09_Farm {
             for (let index: number = 0; index < macDonaldsAnimals.length; index++) {
                 let currentAnimal: Animal = macDonaldsAnimals[index];
                 console.log(currentSupplies);
-                
-                if (index <= 4 ){
+                console.log(currentAnimal.lyrics);
+                if (index < 3 ){
                     currentAnimal.eat(currentSupplies);
                     // setTimeout(function (): void {
                     refreshAnimalCharacteristics(currentAnimal);
@@ -105,10 +105,9 @@ namespace L09_Farm {
                     refreshSupplies();
                     // }, 3000);
                     console.log(index);
-                    console.log("kleiner 4");
                     console.log(currentAnimal.species,"eats",currentAnimal.nHunger, currentAnimal.food);
-                    console.log(currentSupplies);
-                    console.log();
+                    
+                
                     
                 }
                 else {
@@ -116,9 +115,9 @@ namespace L09_Farm {
                     //index = 0;
                     endFarm();
                     console.log(index);
-                    console.log("4+");
-                    console.log(currentAnimal.species, currentAnimal.food, currentAnimal.nHunger);
+                    console.log(currentAnimal.species,"eats",currentAnimal.nHunger, currentAnimal.food);
                     console.log(currentSupplies);
+                    
                 }
             //console.log(index);
             //console.log(currentAnimal);
@@ -153,7 +152,7 @@ namespace L09_Farm {
         }
     
         function endFarm (): void {
-            generalLyrics.remove();
+             generalLyrics.remove();
             animalCharacteristics.remove();
             animalLyrics.remove();
     
@@ -185,7 +184,7 @@ namespace L09_Farm {
         function restartFunction (): void {
             document.body.innerHTML = "";
     
-            farmSettings();
+            farm();
         }
     
     }
