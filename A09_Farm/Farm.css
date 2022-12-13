@@ -59,6 +59,7 @@
 }
 
 .supplies {
+    display: none;
     position: absolute;
     background-color:yellowgreen;
     width: 250px;
@@ -72,6 +73,7 @@
 }
 
 .grocery {
+    display: none;
     position: absolute;
     background-color:yellowgreen;
     width: 450px;
