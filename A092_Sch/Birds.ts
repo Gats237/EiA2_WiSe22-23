@@ -1,26 +1,24 @@
-namespace L09_VogelhausClases {
-    console.log("Snow");
+namespace L09_VogelhausClases{
 
-    export class birds {
+    export class Bird {
 
         positon: Vector;
         velocity: Vector;
         type: number;
         size: number;
       
-        constructor(_size: number) {
-            console.log("ConstructorSnow")
+        constructor(size: number) {
+           
             this.positon= new Vector(0,0);
-            this.positon.random(0,100)
+            this.positon.random(0,1000)
             this.velocity = new Vector(0, 0);
             this.velocity.random(20, -10);
             this.size = _size;
-            this.drawbird();}
+           ;}
         
 
 
         move(_timeslice: number): void {
-            console.log("1221");
             let offset: Vector = new Vector(this.velocity.x, this.velocity.y);
             offset.scale(_timeslice);
             this.positon.add(offset);
@@ -35,10 +33,11 @@ namespace L09_VogelhausClases {
             this.positon.y -= ctx.canvas.height;
             }
 
-            drawbird(){
-                            
-                            ctx.translate(this.positon.x, this.positon.y);
+            drawbirds(){  
+                console.log("ConstructorBird")
                             ctx.beginPath();
+                            ctx.save
+                            ctx.translate(this.positon.x, this.positon.y);
                             ctx.moveTo(0,0)
                             ctx.lineTo(70,-70);
                             ctx.lineTo(-80,-80);
@@ -54,19 +53,18 @@ namespace L09_VogelhausClases {
                             ctx.lineTo(155,-80);
                             ctx.lineTo(150,-70);
                             ctx.lineTo(130,-50);
-                            ctx.fillStyle =  "hsl(" + Math.random() * 180 + ", 50%, 25%)";
+                            ctx.closePath;
+                            ctx.fillStyle =  "hsl(" + Math.random() * this.size + ", 50%, 25%)";
                             ctx.fill();
-                            ctx.stroke();
                             ctx.beginPath();
+                            ctx.save();
                             ctx.lineTo(110,-160);
                             ctx.lineTo(130,-170);
                             ctx.lineTo(180,-150);
+                            ctx.closePath;
                             ctx.fillStyle = "white";
                             ctx.fill();
-                            ctx.stroke();
-                            ctx.fill();
-                            ctx.stroke();
-                          
+                            ctx.restore();                          
                    }
                 
             }

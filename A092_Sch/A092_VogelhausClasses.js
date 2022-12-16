@@ -9,6 +9,7 @@ Quellen: W3 Schhols, Youtube
 var L09_VogelhausClases;
 (function (L09_VogelhausClases) {
     window.addEventListener("load", handleLoad);
+    let imgData;
     function handleLoad(_event) {
         console.log("Hallo");
         let canvas = document.querySelector("canvas");
@@ -16,6 +17,7 @@ var L09_VogelhausClases;
             return;
         L09_VogelhausClases.ctx = canvas.getContext("2d");
         let horizon = L09_VogelhausClases.ctx.canvas.height * 0.6;
+        L09_VogelhausClases.ctx.save();
         drawbackround();
         drawSun({ x: 100, y: 75 });
         drawMountains({ x: 0, y: horizon }, 450, 900, "grey", "white");
@@ -25,9 +27,14 @@ var L09_VogelhausClases;
         Schneemann({ x: 700, y: 2300 });
         posTrees();
         drawBirdathouse({ x: 130, y: 1700 });
-        drawSnow();
         L09_VogelhausClases.ctx.save();
-        update();
+        drawSnow();
+        imgData = L09_VogelhausClases.ctx.getImageData(0, 0, canvas.width, canvas.height);
+        setInterval(update, 100);
+        L09_VogelhausClases.ctx.restore();
+        drawBirds();
+        setInterval(update1, 100);
+        L09_VogelhausClases.ctx.restore();
         //drawBirds();
     }
     // function snowPos(): void {
@@ -53,6 +60,8 @@ var L09_VogelhausClases;
     }
     function drawbackround() {
         console.log("Background");
+        L09_VogelhausClases.ctx.save();
+        L09_VogelhausClases.ctx.beginPath();
         let gradient = L09_VogelhausClases.ctx.createLinearGradient(0, 0, 0, L09_VogelhausClases.ctx.canvas.height);
         gradient.addColorStop(0, "lightblue");
         gradient.addColorStop(0.8, " white");
@@ -60,9 +69,11 @@ var L09_VogelhausClases;
         L09_VogelhausClases.ctx.closePath();
         L09_VogelhausClases.ctx.fillStyle = gradient;
         L09_VogelhausClases.ctx.fillRect(0, 0, L09_VogelhausClases.ctx.canvas.width, L09_VogelhausClases.ctx.canvas.height);
+        L09_VogelhausClases.ctx.restore();
     }
     function drawSun(_postion) {
         console.log("Sonne");
+        L09_VogelhausClases.ctx.save();
         let r1 = 100;
         let r2 = 320;
         let gradient = L09_VogelhausClases.ctx.createRadialGradient(0, 0, r1, 0, 0, r2);
@@ -74,13 +85,14 @@ var L09_VogelhausClases;
         L09_VogelhausClases.ctx.arc(0, 0, r2, 0, 2 * Math.PI);
         L09_VogelhausClases.ctx.fill();
         L09_VogelhausClases.ctx.closePath();
-        // ctx.restore();
+        L09_VogelhausClases.ctx.restore();
     }
     function drawMountains(_postion, _min, _max, _colorLow, _colroHigh) {
         console.log("Mountain");
         let stepMin = 60;
         let stepMax = 150;
         let x = 0;
+        L09_VogelhausClases.ctx.save();
         L09_VogelhausClases.ctx.beginPath();
         L09_VogelhausClases.ctx.translate(_postion.x, _postion.y);
         L09_VogelhausClases.ctx.moveTo(0, 0);
@@ -97,9 +109,10 @@ var L09_VogelhausClases;
         L09_VogelhausClases.ctx.fillStyle = gradient;
         L09_VogelhausClases.ctx.fill();
         L09_VogelhausClases.ctx.closePath();
-        //ctx.restore();
+        L09_VogelhausClases.ctx.restore();
     }
     function birdhoause(_postion) {
+        L09_VogelhausClases.ctx.save();
         L09_VogelhausClases.ctx.beginPath();
         L09_VogelhausClases.ctx.translate(_postion.x, _postion.y);
         L09_VogelhausClases.ctx.shadowBlur = 20;
@@ -118,18 +131,20 @@ var L09_VogelhausClases;
         L09_VogelhausClases.ctx.closePath();
         L09_VogelhausClases.ctx.fillStyle = "brown";
         L09_VogelhausClases.ctx.fill();
-        //ctx.restore();
+        L09_VogelhausClases.ctx.restore();
     }
     function loch(_postion) {
+        L09_VogelhausClases.ctx.save();
         L09_VogelhausClases.ctx.beginPath();
         L09_VogelhausClases.ctx.translate(_postion.x, _postion.y);
         L09_VogelhausClases.ctx.arc(0, -250, 15, 0.5, 2 * Math.PI);
         L09_VogelhausClases.ctx.closePath();
         L09_VogelhausClases.ctx.fillStyle = " black";
         L09_VogelhausClases.ctx.fill();
-        // ctx.restore();
+        L09_VogelhausClases.ctx.restore();
     }
     function Schneemann(_postion) {
+        L09_VogelhausClases.ctx.save();
         L09_VogelhausClases.ctx.beginPath();
         L09_VogelhausClases.ctx.translate(_postion.x, _postion.y);
         L09_VogelhausClases.ctx.arc(0, -430, 80, 0, 2 * Math.PI);
@@ -163,9 +178,10 @@ var L09_VogelhausClases;
         L09_VogelhausClases.ctx.fillStyle = "orange";
         L09_VogelhausClases.ctx.fill();
         L09_VogelhausClases.ctx.stroke();
-        //ctx.restore();
+        L09_VogelhausClases.ctx.restore();
     }
     function drawTrees(_postion) {
+        L09_VogelhausClases.ctx.save();
         L09_VogelhausClases.ctx.beginPath();
         L09_VogelhausClases.ctx.translate(_postion.x, _postion.y);
         L09_VogelhausClases.ctx.shadowBlur = 20;
@@ -180,8 +196,9 @@ var L09_VogelhausClases;
         L09_VogelhausClases.ctx.closePath();
         L09_VogelhausClases.ctx.fill();
         L09_VogelhausClases.ctx.stroke();
-        //ctx.restore();
+        L09_VogelhausClases.ctx.restore();
         for (let i = -2; i < 3; i++) {
+            L09_VogelhausClases.ctx.save();
             L09_VogelhausClases.ctx.beginPath();
             L09_VogelhausClases.ctx.arc(_postion.x + i * Math.random() * 50, (_postion.y + i * Math.random() * 50), 100, 0, 2 * Math.PI);
             let gradient1 = L09_VogelhausClases.ctx.createLinearGradient(0, 1, 0, 100);
@@ -193,6 +210,7 @@ var L09_VogelhausClases;
             L09_VogelhausClases.ctx.fill();
             L09_VogelhausClases.ctx.stroke();
             console.log("baum");
+            L09_VogelhausClases.ctx.restore();
         }
     }
     // function drawBirds (_postion: Vector){
@@ -229,6 +247,7 @@ var L09_VogelhausClases;
     //             ctx.restore();
     //         }
     function drawBirdathouse(_postion) {
+        L09_VogelhausClases.ctx.save();
         L09_VogelhausClases.ctx.beginPath();
         L09_VogelhausClases.ctx.translate(_postion.x, _postion.y);
         L09_VogelhausClases.ctx.moveTo(0, 0);
@@ -258,36 +277,41 @@ var L09_VogelhausClases;
         L09_VogelhausClases.ctx.closePath();
         L09_VogelhausClases.ctx.fill();
         L09_VogelhausClases.ctx.stroke();
-        //ctx.restore();
+        L09_VogelhausClases.ctx.restore();
     }
     function drawSnow() {
         //window.setInterval (update,200);
         for (let index = 0; index < 100; index++) {
-            let snowflake = new L09_VogelhausClases.Snowflake(20);
+            let snowflake = new L09_VogelhausClases.Snowflake(Math.random() * 20);
             snowflakeArray.push(snowflake);
         }
         console.log(snowflakeArray);
     }
     let snowflakeArray = [];
-    //let birdArray:birds[]=[];
-    console.log(snowflakeArray);
-    //function drawBirds(){
-    // console.log("snowflake");
-    // //window.setInterval (update,200);
-    // let bird1: birds = new birds(20);
-    // for (let index = 0; index < 100; index++) {
-    //     bird1.move(0.00000000001);
-    //     bird1.drawbird();
-    //     birdArray.push(bird1);
-    // }
+    let birdArray = [];
+    function drawBirds() {
+        console.log("q");
+        for (let index = 0; index < 100; index++) {
+            let bird1 = new L09_VogelhausClases.Bird();
+            birdArray.push(bird1);
+            console.log(birdArray);
+        }
+    }
     function update() {
-        console.log("update");
         L09_VogelhausClases.ctx.clearRect(0, 0, L09_VogelhausClases.ctx.canvas.width, L09_VogelhausClases.ctx.canvas.height);
-        //     ctx.restore();
-        //     for(let i= 0; i<snowflakeArray.length; i++){
-        //     snowflakeArray[i].move(1/50);
-        //     snowflakeArray[i].draw();
-        // }
+        L09_VogelhausClases.ctx.putImageData(imgData, 0, 0);
+        for (let i = 0; i < snowflakeArray.length; i++) {
+            snowflakeArray[i].move(1 / 50);
+            snowflakeArray[i].draw();
+        }
+    }
+    function update1() {
+        L09_VogelhausClases.ctx.clearRect(0, 0, L09_VogelhausClases.ctx.canvas.width, L09_VogelhausClases.ctx.canvas.height);
+        L09_VogelhausClases.ctx.putImageData(imgData, 0, 0);
+        for (let i = 0; i < birdArray.length; i++) {
+            birdArray[i].move(1 / 50);
+            birdArray[i].drawbirds();
+        }
     }
 })(L09_VogelhausClases || (L09_VogelhausClases = {}));
 //# sourceMappingURL=A092_VogelhausClasses.js.map

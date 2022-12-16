@@ -1,6 +1,6 @@
 
 namespace L09_VogelhausClases {
-    console.log("Snow");
+    
 
     export class Snowflake {
 
@@ -16,12 +16,12 @@ namespace L09_VogelhausClases {
             this.velocity = new Vector(0, 0);
             this.velocity.random(20, 2000);
             this.size = _size;
-            this.draw();}
+            }
         
 
 
         move(_timeslice: number): void {
-            console.log("1221");
+           
             let offset: Vector = new Vector(this.velocity.x, this.velocity.y);
             offset.scale(_timeslice);
             this.positon.add(offset);
@@ -40,14 +40,15 @@ namespace L09_VogelhausClases {
 
 
         draw(): void {
-           let p:number=Math.random()*15;
-            console.log("moin");
+        
             ctx.beginPath();
+            ctx.save();
             ctx.translate(this.positon.x, this.positon.y);
-            ctx.arc(0, 0, p, 2, 4 * Math.PI);
+            ctx.arc(0, 0, this.size, 2, 4 * Math.PI);
             ctx.fillStyle = " white";
             ctx.closePath();
             ctx.fill();
+            ctx.restore();
            
            
 

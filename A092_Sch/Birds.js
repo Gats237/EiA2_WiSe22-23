@@ -1,23 +1,20 @@
 "use strict";
 var L09_VogelhausClases;
 (function (L09_VogelhausClases) {
-    console.log("Snow");
-    class birds {
+    class Bird {
         positon;
         velocity;
         type;
         size;
-        constructor(_size) {
-            console.log("ConstructorSnow");
+        constructor(size) {
             this.positon = new L09_VogelhausClases.Vector(0, 0);
-            this.positon.random(0, 100);
+            this.positon.random(0, 1000);
             this.velocity = new L09_VogelhausClases.Vector(0, 0);
             this.velocity.random(20, -10);
             this.size = _size;
-            this.drawbird();
+            ;
         }
         move(_timeslice) {
-            console.log("1221");
             let offset = new L09_VogelhausClases.Vector(this.velocity.x, this.velocity.y);
             offset.scale(_timeslice);
             this.positon.add(offset);
@@ -30,9 +27,11 @@ var L09_VogelhausClases;
             if (this.positon.y > L09_VogelhausClases.ctx.canvas.height)
                 this.positon.y -= L09_VogelhausClases.ctx.canvas.height;
         }
-        drawbird() {
-            L09_VogelhausClases.ctx.translate(this.positon.x, this.positon.y);
+        drawbirds() {
+            console.log("ConstructorBird");
             L09_VogelhausClases.ctx.beginPath();
+            L09_VogelhausClases.ctx.save;
+            L09_VogelhausClases.ctx.translate(this.positon.x, this.positon.y);
             L09_VogelhausClases.ctx.moveTo(0, 0);
             L09_VogelhausClases.ctx.lineTo(70, -70);
             L09_VogelhausClases.ctx.lineTo(-80, -80);
@@ -48,20 +47,20 @@ var L09_VogelhausClases;
             L09_VogelhausClases.ctx.lineTo(155, -80);
             L09_VogelhausClases.ctx.lineTo(150, -70);
             L09_VogelhausClases.ctx.lineTo(130, -50);
-            L09_VogelhausClases.ctx.fillStyle = "hsl(" + Math.random() * 180 + ", 50%, 25%)";
+            L09_VogelhausClases.ctx.closePath;
+            L09_VogelhausClases.ctx.fillStyle = "hsl(" + Math.random() * this.size + ", 50%, 25%)";
             L09_VogelhausClases.ctx.fill();
-            L09_VogelhausClases.ctx.stroke();
             L09_VogelhausClases.ctx.beginPath();
+            L09_VogelhausClases.ctx.save();
             L09_VogelhausClases.ctx.lineTo(110, -160);
             L09_VogelhausClases.ctx.lineTo(130, -170);
             L09_VogelhausClases.ctx.lineTo(180, -150);
+            L09_VogelhausClases.ctx.closePath;
             L09_VogelhausClases.ctx.fillStyle = "white";
             L09_VogelhausClases.ctx.fill();
-            L09_VogelhausClases.ctx.stroke();
-            L09_VogelhausClases.ctx.fill();
-            L09_VogelhausClases.ctx.stroke();
+            L09_VogelhausClases.ctx.restore();
         }
     }
-    L09_VogelhausClases.birds = birds;
+    L09_VogelhausClases.Bird = Bird;
 })(L09_VogelhausClases || (L09_VogelhausClases = {}));
 //# sourceMappingURL=Birds.js.map
