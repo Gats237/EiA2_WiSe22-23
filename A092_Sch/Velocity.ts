@@ -1,5 +1,5 @@
-namespace L09_VogelhausClases {
-    export class Moveable extends Object {
+// namespace L09_VogelhausClases {
+//     export class Moveable extends Object {
 
 
 // velocity: Vector;

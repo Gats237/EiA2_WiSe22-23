@@ -12,16 +12,17 @@ namespace L09_VogelhausClases {
         constructor(_size: number) {
             console.log("ConstructorSnow")
             this.positon= new Vector(0,0);
-            this.positon.random(0,1500)
+            this.positon.random(0,1000)
             this.velocity = new Vector(0, 0);
-            this.velocity.random(20, 22200);
+            this.velocity.random(20, 1000);
             this.size = _size;
             this.draw();}
         
 
 
         move(_timeslice: number): void {
-            console.log("1221");
+console.log("Hallo");
+
             let offset: Vector = new Vector(this.velocity.x, this.velocity.y);
             offset.scale(_timeslice);
             this.positon.add(offset);
@@ -41,15 +42,14 @@ namespace L09_VogelhausClases {
 
         draw(): void {
            let p:number=Math.random()*15;
-            console.log("moin");
-            ctx.save();
             ctx.translate(this.positon.x, this.positon.y);
             ctx.beginPath();
             ctx.arc(0, 0, p, 2, 4 * Math.PI);
             ctx.fillStyle = " white";
             ctx.fill();
             ctx.closePath();
-            ctx.restore();
+            ctx.stroke();
+           
 
 
         }

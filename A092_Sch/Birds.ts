@@ -36,7 +36,7 @@ namespace L09_VogelhausClases {
             }
 
             drawbird(){
-                            ctx.save();
+                            
                             ctx.translate(this.positon.x, this.positon.y);
                             ctx.beginPath();
                             ctx.moveTo(0,0)
@@ -66,7 +66,7 @@ namespace L09_VogelhausClases {
                             ctx.stroke();
                             ctx.fill();
                             ctx.stroke();
-                            ctx.restore();
+                          
                    }
                 
             }

@@ -31,7 +31,6 @@ var L09_VogelhausClases;
                 this.positon.y -= L09_VogelhausClases.ctx.canvas.height;
         }
         drawbird() {
-            L09_VogelhausClases.ctx.save();
             L09_VogelhausClases.ctx.translate(this.positon.x, this.positon.y);
             L09_VogelhausClases.ctx.beginPath();
             L09_VogelhausClases.ctx.moveTo(0, 0);
@@ -61,7 +60,6 @@ var L09_VogelhausClases;
             L09_VogelhausClases.ctx.stroke();
             L09_VogelhausClases.ctx.fill();
             L09_VogelhausClases.ctx.stroke();
-            L09_VogelhausClases.ctx.restore();
         }
     }
     L09_VogelhausClases.birds = birds;
