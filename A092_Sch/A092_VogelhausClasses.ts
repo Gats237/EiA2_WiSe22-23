@@ -7,67 +7,73 @@ Quellen: W3 Schhols, Youtube
 */
 
 
-namespace A081_Vogelhaus {
+namespace L09_VogelhausClases {
 
 
-        window.addEventListener("load", handleLoad);
-       
+    window.addEventListener("load", handleLoad);
 
-            let ctx: CanvasRenderingContext2D;
 
-             interface Vector {
-                x: number;
-                y: number;
+    export let ctx: CanvasRenderingContext2D;
 
-        }
+    interface Vector {
+        x: number;
+        y: number;
 
-     function handleLoad(_event?: Event): void {
+    }
+
+
+    function handleLoad(_event?: Event): void {
         console.log("Hallo");
-       
+
 
         let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
         if (!canvas)
             return;
         ctx = <CanvasRenderingContext2D>canvas.getContext("2d");
-       
-        
+
+
         let horizon: number = ctx.canvas.height * 0.6;
         drawbackround();
         drawSun({ x: 100, y: 75 });
         drawMountains({ x: 0, y: horizon }, 450, 900, "grey", "white");
         drawMountains({ x: 0, y: horizon }, 250, 600, "darkgrey", "lightgrey");
-
+        
         birdhoause({ x: 150, y: 2000 });
         loch({ x: 150, y: 2000 });
         Schneemann({ x: 700, y: 2300 });
         posTrees();
-        birds();
         drawBirdathouse({ x: 130, y: 1700 });
-        snowPos();
+        drawSnow();
+        window.setInterval(update,100);
+        //drawBirds();
+       
+       
     }
 
-    function snowPos(): void {
+    
+
+    // function snowPos(): void {
 
 
-        for (let i: number = 0; i < 250; i++) {
-            let snowposX: number= ctx.canvas.width*Math.random();
-            let snowposY: number= ctx.canvas.height*Math.random()*(-2);
+    //     for (let i: number = 0; i < 250; i++) {
+    //         let snowposX: number = ctx.canvas.width * Math.random();
+    //         let snowposY: number = ctx.canvas.height * Math.random() * (-2);
 
-            drawSnow({ x:snowposX, y:snowposY });
-        }
-    }
-
-
-    function birds(): void {
+    //         drawSnow();
+    //     }
+    // }
 
 
-        for (let i: number =0; i < 20; i++) {
-            let birdposX: number= ctx.canvas.width*Math.random();
-            let birdposY: number= ctx.canvas.height*Math.random();
-            drawBirds({ x:birdposX, y:birdposY });
-        }
-    }
-   
+    // function birds(): void {
+
+
+    //     for (let i: number =0; i < 20; i++) {
+    //         let birdposX: number= ctx.canvas.width*Math.random();
+    //         let birdposY: number= ctx.canvas.height*Math.random();
+    //         drawBirds({ x:birdposX, y:birdposY });
+    //     }
+    // }
+
 
     function posTrees(): void {
 
@@ -76,7 +82,8 @@ namespace A081_Vogelhaus {
             let stammhöhe: number = 0.55 * ctx.canvas.height
             let positionbaum: number = Math.random() * ctx.canvas.width;
             drawTrees({ x: positionbaum, y: stammhöhe });
-        }}
+        }
+    }
 
     function drawbackround(): void {
         console.log("Background");
@@ -214,8 +221,8 @@ namespace A081_Vogelhaus {
 
 
     function drawTrees(_postion: Vector) {
-    
-        
+
+
         ctx.save();
         ctx.translate(_postion.x, _postion.y);
         ctx.beginPath();
@@ -232,110 +239,139 @@ namespace A081_Vogelhaus {
         ctx.fill();
         ctx.stroke();
         ctx.restore();
-       
-        for (let i = -2; i< 3; i++) {
+
+        for (let i = -2; i < 3; i++) {
+            ctx.beginPath();
+            ctx.arc(_postion.x + i * Math.random() * 50, (_postion.y + i * Math.random() * 50), 100, 0, 2 * Math.PI);
+            let gradient1: CanvasGradient = ctx.createLinearGradient(0, 1, 0, 100)
+            gradient1.addColorStop(0, "white");
+            gradient1.addColorStop(0.1, " green");
+            gradient1.addColorStop(1.0, " green");
+            ctx.fillStyle = "gradient1";
+            ctx.fill();
+            ctx.stroke();
+            ctx.closePath();
+            console.log("baum");
+        }
+    }
+
+
+    // function drawBirds (_postion: Vector){
+
+    //             ctx.save();
+    //             ctx.translate(_postion.x, _postion.y);
+    //             ctx.beginPath();
+    //             ctx.moveTo(0,0)
+    //             ctx.lineTo(70,-70);
+    //             ctx.lineTo(-80,-80);
+    //             ctx.lineTo(0,-90);
+    //             ctx.lineTo(-80,-120);
+    //             ctx.lineTo(60,-130);
+    //             ctx.lineTo(90,-120);
+    //             ctx.lineTo(100,-140);
+    //             ctx.lineTo(110,-160);
+    //             ctx.lineTo(130,-170);
+    //             ctx.lineTo(180,-150);
+    //             ctx.lineTo(150,-140);
+    //             ctx.lineTo(155,-80);
+    //             ctx.lineTo(150,-70);
+    //             ctx.lineTo(130,-50);
+    //             ctx.fillStyle =  "hsl(" + Math.random() * 180 + ", 50%, 25%)";
+    //             ctx.fill();
+    //             ctx.stroke();
+    //             ctx.beginPath();
+    //             ctx.lineTo(110,-160);
+    //             ctx.lineTo(130,-170);
+    //             ctx.lineTo(180,-150);
+    //             ctx.fillStyle = "white";
+    //             ctx.fill();
+    //             ctx.stroke();
+    //             ctx.fill();
+    //             ctx.stroke();
+    //             ctx.restore();
+    //         }
+
+
+
+    function drawBirdathouse(_postion: Vector) {
+        ctx.save();
+        ctx.translate(_postion.x, _postion.y);
         ctx.beginPath();
-        ctx.arc(_postion.x+i*Math.random()*50, (_postion.y+i*Math.random()*50 ), 100, 0, 2 * Math.PI);
-        let gradient1: CanvasGradient = ctx.createLinearGradient(0, 1, 0, 100)
-        gradient1.addColorStop(0, "white");
-        gradient1.addColorStop(0.1, " green");
-        gradient1.addColorStop(1.0, " green");
-        ctx.fillStyle = "gradient1";
+        ctx.moveTo(0, 0)
+        ctx.lineTo(35, -35);
+        ctx.lineTo(-40, -40);
+        ctx.lineTo(0, -45);
+        ctx.lineTo(-40, -60);
+        ctx.lineTo(30, -65);
+        ctx.lineTo(45, -60);
+        ctx.lineTo(50, -70);
+        ctx.lineTo(55, -80);
+        ctx.lineTo(65, -85);
+        ctx.lineTo(90, -75);
+        ctx.lineTo(75, -70);
+        ctx.lineTo(75.25, -40);
+        ctx.lineTo(75, -35);
+        ctx.lineTo(65, -25);
+        ctx.fillStyle = "black";
         ctx.fill();
         ctx.stroke();
-        ctx.closePath();
-        console.log("baum");  }
+        ctx.beginPath();
+        ctx.lineTo(55, -80);
+        ctx.lineTo(65, -85);
+        ctx.lineTo(90, -75);
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.stroke();
+        ctx.restore();
+    }
+
+
+
+    function drawSnow() {
+        console.log("snowflake");
+        //window.setInterval (update,200);
+
+        let snowflake1: Snowflake = new Snowflake(20);
+
+        for (let index = 0; index < 100; index++) {
+            snowflake1.move(0.01);
+            snowflake1.draw();
+            snowflakeArray.push(snowflake1);
+            
+        
+        }
+        console.log(snowflake1);
+
+    }
+
+    let snowflakeArray: Snowflake[]=[];
+    //let birdArray:birds[]=[];
+    console.log(snowflakeArray);
+    //function drawBirds(){
+        // console.log("snowflake");
+        // //window.setInterval (update,200);
+
+        // let bird1: birds = new birds(20);
+
+        // for (let index = 0; index < 100; index++) {
+        //     bird1.move(0.00000000001);
+        //     bird1.drawbird();
+        //     birdArray.push(bird1);
+        
+        // }
+
+    function update(): void{
+        console.log("update");
+        ctx.fillRect(0,0, ctx.canvas.width, ctx.canvas.height);
+
+        for(let snowflake of snowflakeArray){
+            snowflake.move(1/50);
+            snowflake.draw();
+
         }
 
 
-    function drawBirds (_postion: Vector){
-    
-                ctx.save();
-                ctx.translate(_postion.x, _postion.y);
-                ctx.beginPath();
-                ctx.moveTo(0,0)
-                ctx.lineTo(70,-70);
-                ctx.lineTo(-80,-80);
-                ctx.lineTo(0,-90);
-                ctx.lineTo(-80,-120);
-                ctx.lineTo(60,-130);
-                ctx.lineTo(90,-120);
-                ctx.lineTo(100,-140);
-                ctx.lineTo(110,-160);
-                ctx.lineTo(130,-170);
-                ctx.lineTo(180,-150);
-                ctx.lineTo(150,-140);
-                ctx.lineTo(155,-80);
-                ctx.lineTo(150,-70);
-                ctx.lineTo(130,-50);
-                ctx.fillStyle =  "hsl(" + Math.random() * 180 + ", 50%, 25%)";
-                ctx.fill();
-                ctx.stroke();
-                ctx.beginPath();
-                ctx.lineTo(110,-160);
-                ctx.lineTo(130,-170);
-                ctx.lineTo(180,-150);
-                ctx.fillStyle = "white";
-                ctx.fill();
-                ctx.stroke();
-                ctx.fill();
-                ctx.stroke();
-                ctx.restore();
-            }
+    }
+   
 
-
-
-  function drawBirdathouse (_postion: Vector){
-                    ctx.save();
-                    ctx.translate(_postion.x, _postion.y);
-                    ctx.beginPath();
-                    ctx.moveTo(0,0)
-                    ctx.lineTo(35,-35);
-                    ctx.lineTo(-40,-40);
-                    ctx.lineTo(0,-45);
-                    ctx.lineTo(-40,-60);
-                    ctx.lineTo(30,-65);
-                    ctx.lineTo(45,-60);
-                    ctx.lineTo(50,-70);
-                    ctx.lineTo(55,-80);
-                    ctx.lineTo(65,-85);
-                    ctx.lineTo(90,-75);
-                    ctx.lineTo(75,-70);
-                    ctx.lineTo(75.25,-40);
-                    ctx.lineTo(75,-35);
-                    ctx.lineTo(65,-25);
-                    ctx.fillStyle = "black";
-                    ctx.fill();
-                    ctx.stroke();
-                    ctx.beginPath();
-                    ctx.lineTo(55,-80);
-                    ctx.lineTo(65,-85);
-                    ctx.lineTo(90,-75);
-                    ctx.fillStyle = "white";
-                    ctx.fill();
-                    ctx.stroke();
-                   }
-    
-
-
-function drawSnow(_postion: Vector){
-    let p: number= Math.random()*30; 
-    ctx.save();
-    ctx.translate(_postion.x, _postion.y);
-    ctx.beginPath();
-    ctx.arc(0,0,p, 2, 4 * Math.PI)
-    ctx.fillStyle = " white";
-    ctx.fill();
-    ctx.closePath();
-    ctx.restore();
 }
-
-
-
-
-
-        }
-
-
-
-

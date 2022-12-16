@@ -117,7 +117,7 @@ namespace L09_Farm {
                     refreshSupplies();
                     // }, 3000);
                     console.log(index);
-                    console.log(currentAnimal.species,"eats",currentAnimal.nHunger, currentAnimal.food);
+                    console.log(currentAnimal.species,"eats",currentAnimal.amount, currentAnimal.food);
                     
                 
                     
@@ -127,7 +127,7 @@ namespace L09_Farm {
                     //index = 0;
                     endFarm();
                     console.log(index);
-                    console.log(currentAnimal.species,"eats",currentAnimal.nHunger, currentAnimal.food);
+                    console.log(currentAnimal.species,"eats",currentAnimal.amount, currentAnimal.food);
                     console.log(currentSupplies);
                     
                 }
