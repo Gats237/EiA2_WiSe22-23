@@ -43,9 +43,9 @@ namespace L09_VogelhausClases {
         Schneemann({ x: 700, y: 2300 });
         posTrees();
         drawBirdathouse({ x: 130, y: 1700 });
-        ctx.save();
         drawSnow();
-        window.setInterval(update,10);
+        ctx.save();
+        update();
         //drawBirds();
        
        
@@ -92,6 +92,7 @@ namespace L09_VogelhausClases {
         gradient.addColorStop(0, "lightblue");
         gradient.addColorStop(0.8, " white");
         gradient.addColorStop(1.0, " white");
+        ctx.closePath();
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     }
@@ -106,12 +107,13 @@ namespace L09_VogelhausClases {
         gradient.addColorStop(0, "yellow");
         gradient.addColorStop(1, "hsl(353,42%,76%");
 
-        ctx.save();
+        ctx.beginPath();
         ctx.translate(_postion.x, _postion.y);
         ctx.fillStyle = gradient;
         ctx.arc(0, 0, r2, 0, 2 * Math.PI);
         ctx.fill();
-        ctx.restore();
+        ctx.closePath();
+       // ctx.restore();
     }
 
 
@@ -121,10 +123,11 @@ namespace L09_VogelhausClases {
         let stepMax: number = 150;
         let x: number = 0;
 
-        ctx.save();
-        ctx.translate(_postion.x, _postion.y)
+        
+      
 
         ctx.beginPath();
+        ctx.translate(_postion.x, _postion.y)
         ctx.moveTo(0, 0);
         ctx.lineTo(0, -_max);
 
@@ -136,7 +139,6 @@ namespace L09_VogelhausClases {
         } while (x < ctx.canvas.width);
 
         ctx.lineTo(x, 0);
-        ctx.closePath();
 
         let gradient: CanvasGradient = ctx.createLinearGradient(0, 0, 0, -_max);
         gradient.addColorStop(0, _colorLow);
@@ -144,14 +146,15 @@ namespace L09_VogelhausClases {
 
         ctx.fillStyle = gradient;
         ctx.fill();
-        ctx.restore();
+        ctx.closePath();
+        //ctx.restore();
     }
 
     function birdhoause(_postion: Vector) {
-        ctx.save();
-        ctx.translate(_postion.x, _postion.y)
 
-        ctx.beginPath();
+
+        ctx.beginPath();     
+        ctx.translate(_postion.x, _postion.y)
         ctx.shadowBlur = 20;
         ctx.shadowOffsetX = -10;
         ctx.shadowOffsetY = 30;
@@ -168,43 +171,52 @@ namespace L09_VogelhausClases {
         ctx.closePath();
         ctx.fillStyle = "brown";
         ctx.fill();
-        ctx.restore();
+        
+        //ctx.restore();
     }
 
 
     function loch(_postion: Vector) {
 
-        ctx.save();
-        ctx.translate(_postion.x, _postion.y)
+       
+       
         ctx.beginPath();
+        ctx.translate(_postion.x, _postion.y)
         ctx.arc(0, -250, 15, 0.5, 2 * Math.PI)
+        ctx.closePath();
         ctx.fillStyle = " black";
         ctx.fill();
-        ctx.restore();
+       // ctx.restore();
     }
 
 
     function Schneemann(_postion: Vector) {
 
-        ctx.save();
-        ctx.translate(_postion.x, _postion.y);
+    
+       
         ctx.beginPath();
+        ctx.translate(_postion.x, _postion.y);
         ctx.arc(0, -430, 80, 0, 2 * Math.PI);
+        ctx.closePath();
         ctx.stroke();
         ctx.beginPath();
         ctx.arc(0, -250, 100, 0, 2 * Math.PI);
+        ctx.closePath();
         ctx.stroke();
         ctx.beginPath();
         ctx.arc(0, 0, 150, 0, 2 * Math.PI);
+        ctx.closePath();
         ctx.stroke();
         ctx.beginPath();
         ctx.arc(-25, -450, 20, 0, 2 * Math.PI);
+        ctx.closePath();
         ctx.fillStyle = " black";
         ctx.fill();
         ctx.stroke();
         ctx.beginPath();
         ctx.arc(25, -450, 20, 0, 2 * Math.PI);
         ctx.fillStyle = " black";
+        ctx.closePath();
         ctx.fill();
         ctx.stroke();
 
@@ -216,7 +228,7 @@ namespace L09_VogelhausClases {
         ctx.fillStyle = "orange";
         ctx.fill();
         ctx.stroke();
-        ctx.restore();
+        //ctx.restore();
     }
 
 
@@ -224,9 +236,10 @@ namespace L09_VogelhausClases {
     function drawTrees(_postion: Vector) {
 
 
-        ctx.save();
-        ctx.translate(_postion.x, _postion.y);
+      
+     
         ctx.beginPath();
+        ctx.translate(_postion.x, _postion.y);
         ctx.shadowBlur = 20;
         ctx.shadowOffsetX = 10;
         ctx.shadowOffsetY = -20;
@@ -235,11 +248,12 @@ namespace L09_VogelhausClases {
         ctx.lineTo(0, 300)
         ctx.lineTo(25, 300);
         ctx.lineTo(25, 0);
-        ctx.closePath();
         ctx.fillStyle = "brown";
+        ctx.closePath();
         ctx.fill();
         ctx.stroke();
-        ctx.restore();
+       
+        //ctx.restore();
 
         for (let i = -2; i < 3; i++) {
             ctx.beginPath();
@@ -249,9 +263,9 @@ namespace L09_VogelhausClases {
             gradient1.addColorStop(0.1, " green");
             gradient1.addColorStop(1.0, " green");
             ctx.fillStyle = "gradient1";
+            ctx.closePath();
             ctx.fill();
             ctx.stroke();
-            ctx.closePath();
             console.log("baum");
         }
     }
@@ -295,9 +309,10 @@ namespace L09_VogelhausClases {
 
 
     function drawBirdathouse(_postion: Vector) {
-        ctx.save();
-        ctx.translate(_postion.x, _postion.y);
+        
+        
         ctx.beginPath();
+        ctx.translate(_postion.x, _postion.y);
         ctx.moveTo(0, 0)
         ctx.lineTo(35, -35);
         ctx.lineTo(-40, -40);
@@ -313,6 +328,7 @@ namespace L09_VogelhausClases {
         ctx.lineTo(75.25, -40);
         ctx.lineTo(75, -35);
         ctx.lineTo(65, -25);
+        ctx.closePath();
         ctx.fillStyle = "black";
         ctx.fill();
         ctx.stroke();
@@ -321,9 +337,10 @@ namespace L09_VogelhausClases {
         ctx.lineTo(65, -85);
         ctx.lineTo(90, -75);
         ctx.fillStyle = "white";
+        ctx.closePath();
         ctx.fill();
         ctx.stroke();
-        ctx.restore();
+        //ctx.restore();
     }
 
 
@@ -361,12 +378,12 @@ namespace L09_VogelhausClases {
 
     function update(): void{
         console.log("update");
-        ctx.fillRect(0,0, ctx.canvas.width, ctx.canvas.height);
-        ctx.restore();
-        for(let i= 0; i< snowflakeArray.length; i++){
-        snowflakeArray[i].move(10);
-        snowflakeArray[i].draw();
-    }
+        ctx.clearRect( 0,0,ctx.canvas.width, ctx.canvas.height);
+    //     ctx.restore();
+    //     for(let i= 0; i<snowflakeArray.length; i++){
+    //     snowflakeArray[i].move(1/50);
+    //     snowflakeArray[i].draw();
+    // }
 
 
     }
