@@ -27,15 +27,10 @@ var L09_VogelhausClases;
         Schneemann({ x: 700, y: 2300 });
         posTrees();
         drawBirdathouse({ x: 130, y: 1700 });
-        L09_VogelhausClases.ctx.save();
         drawSnow();
+        drawBirds();
         imgData = L09_VogelhausClases.ctx.getImageData(0, 0, canvas.width, canvas.height);
         setInterval(update, 100);
-        L09_VogelhausClases.ctx.restore();
-        drawBirds();
-        setInterval(update1, 100);
-        L09_VogelhausClases.ctx.restore();
-        //drawBirds();
     }
     // function snowPos(): void {
     //     for (let i: number = 0; i < 250; i++) {
@@ -300,14 +295,12 @@ var L09_VogelhausClases;
     function update() {
         L09_VogelhausClases.ctx.clearRect(0, 0, L09_VogelhausClases.ctx.canvas.width, L09_VogelhausClases.ctx.canvas.height);
         L09_VogelhausClases.ctx.putImageData(imgData, 0, 0);
+        L09_VogelhausClases.ctx.save();
         for (let i = 0; i < snowflakeArray.length; i++) {
             snowflakeArray[i].move(1 / 50);
             snowflakeArray[i].draw();
         }
-    }
-    function update1() {
-        L09_VogelhausClases.ctx.clearRect(0, 0, L09_VogelhausClases.ctx.canvas.width, L09_VogelhausClases.ctx.canvas.height);
-        L09_VogelhausClases.ctx.putImageData(imgData, 0, 0);
+        L09_VogelhausClases.ctx.restore();
         for (let i = 0; i < birdArray.length; i++) {
             birdArray[i].move(1 / 50);
             birdArray[i].drawbirds();

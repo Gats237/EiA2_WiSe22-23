@@ -46,16 +46,11 @@ namespace L09_VogelhausClases {
         Schneemann({ x: 700, y: 2300 });
         posTrees();
         drawBirdathouse({ x: 130, y: 1700 });
-        ctx.save();
         drawSnow();
+        drawBirds();
         imgData  = ctx.getImageData (0, 0, canvas.width, canvas.height);
         setInterval(update, 100);
-        ctx.restore();
-        drawBirds();
-        setInterval(update1, 100);
-        ctx.restore();
-        //drawBirds();
-       
+        
        
     }
 
@@ -395,25 +390,20 @@ namespace L09_VogelhausClases {
 
 
     function update(): void{
+       
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
-        ctx.putImageData(imgData,0 ,0)
+        ctx.putImageData(imgData,0 ,0);
+        ctx.save();
         for(let i= 0; i<snowflakeArray.length; i++){
          snowflakeArray[i].move(1/50);
          snowflakeArray[i].draw();
         }
-    }
-       
-        function update1():void {
-            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
-            ctx.putImageData(imgData,0 ,0)
-            for(let i= 0; i<birdArray.length; i++){
+        ctx.restore();
+        for(let i= 0; i<birdArray.length; i++){
             birdArray[i].move(1/50);
-            birdArray[i].drawbirds();
-
-            }
-
+            birdArray[i].drawbirds();}
     }
-   
-   
+      
+
 
 }

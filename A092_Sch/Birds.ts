@@ -7,14 +7,13 @@ namespace L09_VogelhausClases{
         type: number;
         size: number;
       
-        constructor(size: number) {
+        constructor() {
            
             this.positon= new Vector(0,0);
-            this.positon.random(0,1000)
+            this.positon.random(0,100)
             this.velocity = new Vector(0, 0);
             this.velocity.random(20, -10);
-            this.size = _size;
-           ;}
+        }
         
 
 
@@ -34,36 +33,39 @@ namespace L09_VogelhausClases{
             }
 
             drawbirds(){  
-                console.log("ConstructorBird")
-                            ctx.beginPath();
-                            ctx.save
-                            ctx.translate(this.positon.x, this.positon.y);
-                            ctx.moveTo(0,0)
-                            ctx.lineTo(70,-70);
-                            ctx.lineTo(-80,-80);
-                            ctx.lineTo(0,-90);
-                            ctx.lineTo(-80,-120);
-                            ctx.lineTo(60,-130);
-                            ctx.lineTo(90,-120);
-                            ctx.lineTo(100,-140);
-                            ctx.lineTo(110,-160);
-                            ctx.lineTo(130,-170);
-                            ctx.lineTo(180,-150);
-                            ctx.lineTo(150,-140);
-                            ctx.lineTo(155,-80);
-                            ctx.lineTo(150,-70);
-                            ctx.lineTo(130,-50);
-                            ctx.closePath;
-                            ctx.fillStyle =  "hsl(" + Math.random() * this.size + ", 50%, 25%)";
-                            ctx.fill();
-                            ctx.beginPath();
-                            ctx.save();
-                            ctx.lineTo(110,-160);
-                            ctx.lineTo(130,-170);
-                            ctx.lineTo(180,-150);
-                            ctx.closePath;
-                            ctx.fillStyle = "white";
-                            ctx.fill();
+               
+                
+                ctx.beginPath();
+                ctx.save();
+                ctx.lineTo(0,0);
+                ctx.strokeStyle="black";
+                ctx.stroke();
+                            // ctx.moveTo(0,0)
+                            // ctx.lineTo(70,-70);
+                            // ctx.lineTo(-80,-80);
+                            // ctx.lineTo(0,-90);
+                            // ctx.lineTo(-80,-120);
+                            // ctx.lineTo(60,-130);
+                            // ctx.lineTo(90,-120);
+                            // ctx.lineTo(100,-140);
+                            // ctx.lineTo(110,-160);
+                            // ctx.lineTo(130,-170);
+                            // ctx.lineTo(180,-150);
+                            // ctx.lineTo(150,-140);
+                            // ctx.lineTo(155,-80);
+                            // ctx.lineTo(150,-70);
+                            // ctx.lineTo(130,-50);
+                            // ctx.closePath;
+                            // ctx.fillStyle =  "hsl(" + Math.random() * this.size + ", 50%, 25%)";
+                            // ctx.fill();
+                            // ctx.beginPath();
+                            // ctx.save();
+                            // ctx.lineTo(110,-160);
+                            // ctx.lineTo(130,-170);
+                            // ctx.lineTo(180,-150);
+                            // ctx.closePath;
+                            // ctx.fillStyle = "white";
+                            //  ctx.fill();
                             ctx.restore();                          
                    }
                 
