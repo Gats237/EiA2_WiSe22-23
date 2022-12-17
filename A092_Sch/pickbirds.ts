@@ -8,6 +8,7 @@ namespace L09_VogelhausClases{
         type: number;
         size: number;
         style:any;
+        eating: boolean;
       
         constructor() {
           
@@ -16,11 +17,11 @@ namespace L09_VogelhausClases{
             this.velocity = new Vector(0, 0);
             this.velocity.random(20, 10000);
             this.style="hsl(" + Math.random() * 180 + ", 50%, 25%)"
+            let values: boolean[] = [true, false];
+            this.eating = values[Math.floor(Math.random() * values.length)];
         }
     
         
-
-
         move(_timeslice: number): void {
             let offset: Vector = new Vector(this.velocity.x, this.velocity.y);
             offset.scale(_timeslice);
@@ -38,13 +39,11 @@ namespace L09_VogelhausClases{
 
             drawbirds(){ 
                 
-            //     console.log("s");
-            // for (var i=0; i<5; i++) {
-            //     timers.push(setTimeout( i*3000));
+          
                   
+            if (this.eating != true) {
                 ctx.save();
                 ctx.beginPath();
-                ctx.translate(_postion.x, _postion.y);
                 ctx.moveTo(0,0)
                 ctx.lineTo(70,-60);
                 ctx.lineTo(-80,-80);
@@ -75,12 +74,9 @@ namespace L09_VogelhausClases{
                 ctx.restore();
             }
              
-            // abbrechen:
-            while (timers.length > 0) {
-                clearTimeout(timers.pop());
+            if (this.eating == true) { {
                 ctx.save();
                 ctx.beginPath();
-                ctx.translate(_postion.x, _postion.y);
                 ctx.moveTo(0,0)
                 ctx.lineTo(70,-60);
                 ctx.lineTo(-80,-80);
@@ -115,4 +111,4 @@ namespace L09_VogelhausClases{
     
     }
 }
-               
+}

@@ -46,10 +46,9 @@ namespace L09_VogelhausClases {
         Schneemann({ x: 700, y: 2300 });
         posTrees();
         drawBirdathouse({ x: 130, y: 1700 });
-        // drawpickBirds({x: 150, y: 2200});
-        
         drawSnow();
         drawBirds();
+        updateBird();
        // drawpickBirdsup();
         imgData  = ctx.getImageData (0, 0, canvas.width, canvas.height);
         setInterval(update, 100);
@@ -316,20 +315,37 @@ namespace L09_VogelhausClases {
     let birdpickArray: Birdpick []=[];
     console.log(birdpickArray);
     
-    // function drawpickBirdsup(){
-    //     console.log("q");
-    
+
+
+    function updateBird(): void {
+        drawpickBirdsup(true);
+    }
+
+
+//Picken funktioniert nicht
+    function drawpickBirdsup(_update:boolean){
+        console.log("q");
+        for (let bird of Birdpick) {
+            ctx.save();
+
+            bird.draw();
+            ctx.restore();
+
+            if (_update) {
+                bird.eat(0 / 150);
+            }
             
-    //         for (let index = 0; index < 2; index++) {
-    //             let birdpick1: Birdpick = new Birdpick();
+            for (let index = 0; index < 2; index++) {
+                let birdpick1: Birdpick = new Birdpick();
     
-    //             birdpickArray.push(birdpick1);
+                birdpickArray.push(birdpick1);
              
-    //         }
-    //     }
+            }
+        }
+    }
     
     
-    function drawBirds(){
+    function drawBirds():void{
     
 
         
@@ -359,6 +375,7 @@ namespace L09_VogelhausClases {
             birdArray[i].move(1/50);
             birdArray[i].drawbirds();
         }
+        drawpickBirdsup(false);
         ctx.restore();
         // ctx.save();
         // for (let i =0; i <birdpickArray.length; i++) {
