@@ -1,5 +1,5 @@
 /*
-Aufgabe: Aufgabe 8 Canvas
+Aufgabe: Aufgabe 092 VogelhausClasses
 Name: Henning Pils
 Matrikel: 269355
 Datum: 27.10.2022
@@ -48,7 +48,7 @@ namespace L09_VogelhausClases {
         drawBirdathouse({ x: 130, y: 1700 });
         drawSnow();
         drawBirds();
-        updateBird();
+       // updateBird();
        // drawpickBirdsup();
         imgData  = ctx.getImageData (0, 0, canvas.width, canvas.height);
         setInterval(update, 100);
@@ -317,32 +317,32 @@ namespace L09_VogelhausClases {
     
 
 
-    function updateBird(): void {
-        drawpickBirdsup(true);
-    }
+//     function updateBird(): void {
+//         drawpickBirdsup(true);
+//     }
 
 
-//Picken funktioniert nicht
-    function drawpickBirdsup(_update:boolean){
-        console.log("q");
-        for (let bird of Birdpick) {
-            ctx.save();
+// //Picken funktioniert nicht
+//     function drawpickBirdsup(_update:boolean){
+//         console.log("q");
+//         for (let bird of Birdpick) {
+//             ctx.save();
 
-            bird.draw();
-            ctx.restore();
+//             bird.draw();
+//             ctx.restore();
 
-            if (_update) {
-                bird.eat(0 / 150);
-            }
+//             if (_update) {
+//                 bird.eat(0 / 150);
+//             }
             
-            for (let index = 0; index < 2; index++) {
-                let birdpick1: Birdpick = new Birdpick();
+//             for (let index = 0; index < 2; index++) {
+//                 let birdpick1: Birdpick = new Birdpick();
     
-                birdpickArray.push(birdpick1);
+//                 birdpickArray.push(birdpick1);
              
-            }
-        }
-    }
+//             }
+//         }
+//     }
     
     
     function drawBirds():void{
