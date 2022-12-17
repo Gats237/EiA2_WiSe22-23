@@ -14,20 +14,21 @@ namespace L04_Datastructur{
 
     function handleLoad(): void {
         
-        let addButton: HTMLButtonElement = document.querySelector("button#add");
+        let addButton: HTMLButtonElement =<HTMLButtonElement> document.querySelector("button#add");
         addButton.addEventListener("click", itemAdd); 
+        
 
     }
     function itemAdd(): void {
-        let formData: FormData = new FormData(document.querySelector("form"));
-        let newItem: FormDataEntryValue = formData.get("newItem"); 
-        let amount: FormDataEntryValue = formData.get("amount"); 
-        let comment: FormDataEntryValue = formData.get("comment"); 
+        let formData: FormData = new FormData(document.querySelector("form")!);
+        let newItem: FormDataEntryValue = formData.get("newItem")!; 
+        let amount: FormDataEntryValue = formData.get("amount")!; 
+        let comment: FormDataEntryValue = formData.get("comment")!; 
         let bought: boolean = false; 
         let date: string = "30.02.2222"; 
         itemNumber++;
 
-        let list: HTMLElement = document.getElementById("list");
+        let list: HTMLElement = document.getElementById("list")!;
 
         let newDiv: HTMLDivElement = document.createElement("div");
         newDiv.setAttribute("class", "lister"); 
@@ -102,8 +103,8 @@ namespace L04_Datastructur{
         let triggerNum: string = trigger.replace(/\D/g, "");
         let identifier: number = parseInt(triggerNum); 
 
-        let list: HTMLElement = document.getElementById("list");
-        let remIt: HTMLElement = document.getElementById("lister" + identifier);
+        let list: HTMLElement = document.getElementById("list")!;
+        let remIt: HTMLElement = document.getElementById("lister" + identifier)!;
         list.removeChild(remIt); 
     }
 
