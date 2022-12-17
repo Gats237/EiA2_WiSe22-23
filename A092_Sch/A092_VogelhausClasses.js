@@ -27,25 +27,13 @@ var L09_VogelhausClases;
         Schneemann({ x: 700, y: 2300 });
         posTrees();
         drawBirdathouse({ x: 130, y: 1700 });
+        // drawpickBirds({x: 150, y: 2200});
         drawSnow();
         drawBirds();
+        // drawpickBirdsup();
         imgData = L09_VogelhausClases.ctx.getImageData(0, 0, canvas.width, canvas.height);
         setInterval(update, 100);
     }
-    // function snowPos(): void {
-    //     for (let i: number = 0; i < 250; i++) {
-    //         let snowposX: number = ctx.canvas.width * Math.random();
-    //         let snowposY: number = ctx.canvas.height * Math.random() * (-2);
-    //         drawSnow();
-    //     }
-    // }
-    // function birds(): void {
-    //     for (let i: number =0; i < 20; i++) {
-    //         let birdposX: number= ctx.canvas.width*Math.random();
-    //         let birdposY: number= ctx.canvas.height*Math.random();
-    //         drawBirds({ x:birdposX, y:birdposY });
-    //     }
-    // }
     function posTrees() {
         for (let i = 0; i < 42; i++) {
             let stammhöhe = 0.55 * L09_VogelhausClases.ctx.canvas.height;
@@ -200,7 +188,7 @@ var L09_VogelhausClases;
             gradient1.addColorStop(0, "white");
             gradient1.addColorStop(0.1, " green");
             gradient1.addColorStop(1.0, " green");
-            L09_VogelhausClases.ctx.fillStyle = "gradient1";
+            L09_VogelhausClases.ctx.fillStyle = "white";
             L09_VogelhausClases.ctx.closePath();
             L09_VogelhausClases.ctx.fill();
             L09_VogelhausClases.ctx.stroke();
@@ -208,39 +196,6 @@ var L09_VogelhausClases;
             L09_VogelhausClases.ctx.restore();
         }
     }
-    // function drawBirds (_postion: Vector){
-    //             ctx.save();
-    //             ctx.translate(_postion.x, _postion.y);
-    //             ctx.beginPath();
-    //             ctx.moveTo(0,0)
-    //             ctx.lineTo(70,-70);
-    //             ctx.lineTo(-80,-80);
-    //             ctx.lineTo(0,-90);
-    //             ctx.lineTo(-80,-120);
-    //             ctx.lineTo(60,-130);
-    //             ctx.lineTo(90,-120);
-    //             ctx.lineTo(100,-140);
-    //             ctx.lineTo(110,-160);
-    //             ctx.lineTo(130,-170);
-    //             ctx.lineTo(180,-150);
-    //             ctx.lineTo(150,-140);
-    //             ctx.lineTo(155,-80);
-    //             ctx.lineTo(150,-70);
-    //             ctx.lineTo(130,-50);
-    //             ctx.fillStyle =  "hsl(" + Math.random() * 180 + ", 50%, 25%)";
-    //             ctx.fill();
-    //             ctx.stroke();
-    //             ctx.beginPath();
-    //             ctx.lineTo(110,-160);
-    //             ctx.lineTo(130,-170);
-    //             ctx.lineTo(180,-150);
-    //             ctx.fillStyle = "white";
-    //             ctx.fill();
-    //             ctx.stroke();
-    //             ctx.fill();
-    //             ctx.stroke();
-    //             ctx.restore();
-    //         }
     function drawBirdathouse(_postion) {
         L09_VogelhausClases.ctx.save();
         L09_VogelhausClases.ctx.beginPath();
@@ -276,7 +231,7 @@ var L09_VogelhausClases;
     }
     function drawSnow() {
         //window.setInterval (update,200);
-        for (let index = 0; index < 100; index++) {
+        for (let index = 0; index < 400; index++) {
             let snowflake = new L09_VogelhausClases.Snowflake(Math.random() * 20);
             snowflakeArray.push(snowflake);
         }
@@ -284,9 +239,17 @@ var L09_VogelhausClases;
     }
     let snowflakeArray = [];
     let birdArray = [];
+    let birdpickArray = [];
+    console.log(birdpickArray);
+    // function drawpickBirdsup(){
+    //     console.log("q");
+    //         for (let index = 0; index < 2; index++) {
+    //             let birdpick1: Birdpick = new Birdpick();
+    //             birdpickArray.push(birdpick1);
+    //         }
+    //     }
     function drawBirds() {
-        console.log("q");
-        for (let index = 0; index < 100; index++) {
+        for (let index = 0; index < 10; index++) {
             let bird1 = new L09_VogelhausClases.Bird();
             birdArray.push(bird1);
             console.log(birdArray);
@@ -301,10 +264,16 @@ var L09_VogelhausClases;
             snowflakeArray[i].draw();
         }
         L09_VogelhausClases.ctx.restore();
+        L09_VogelhausClases.ctx.save();
         for (let i = 0; i < birdArray.length; i++) {
             birdArray[i].move(1 / 50);
             birdArray[i].drawbirds();
         }
+        L09_VogelhausClases.ctx.restore();
+        // ctx.save();
+        // for (let i =0; i <birdpickArray.length; i++) {
+        //     birdpickArray[i].drawbirds();
+        // }
     }
 })(L09_VogelhausClases || (L09_VogelhausClases = {}));
 //# sourceMappingURL=A092_VogelhausClasses.js.map

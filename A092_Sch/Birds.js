@@ -6,11 +6,13 @@ var L09_VogelhausClases;
         velocity;
         type;
         size;
+        style;
         constructor() {
             this.positon = new L09_VogelhausClases.Vector(0, 0);
             this.positon.random(0, 100);
-            this.velocity = new L09_VogelhausClases.Vector(0, 0);
-            this.velocity.random(20, -10);
+            this.velocity = new L09_VogelhausClases.Vector(1, 200);
+            this.velocity.random(20, 1000);
+            this.style = "hsl(" + Math.random() * 180 + ", 50%, 25%)";
         }
         move(_timeslice) {
             let offset = new L09_VogelhausClases.Vector(this.velocity.x, this.velocity.y);
@@ -26,37 +28,36 @@ var L09_VogelhausClases;
                 this.positon.y -= L09_VogelhausClases.ctx.canvas.height;
         }
         drawbirds() {
-            L09_VogelhausClases.ctx.beginPath();
             L09_VogelhausClases.ctx.save();
-            L09_VogelhausClases.ctx.lineTo(0, 0);
-            L09_VogelhausClases.ctx.strokeStyle = "black";
+            L09_VogelhausClases.ctx.translate(this.positon.y, this.positon.x);
+            L09_VogelhausClases.ctx.beginPath();
+            L09_VogelhausClases.ctx.moveTo(0, 0);
+            L09_VogelhausClases.ctx.lineTo(35, -35);
+            L09_VogelhausClases.ctx.lineTo(-40, -40);
+            L09_VogelhausClases.ctx.lineTo(0, -45);
+            L09_VogelhausClases.ctx.lineTo(-40, -60);
+            L09_VogelhausClases.ctx.lineTo(30, -65);
+            L09_VogelhausClases.ctx.lineTo(45, -60);
+            L09_VogelhausClases.ctx.lineTo(50, -70);
+            L09_VogelhausClases.ctx.lineTo(55, -80);
+            L09_VogelhausClases.ctx.lineTo(65, -85);
+            L09_VogelhausClases.ctx.lineTo(90, -75);
+            L09_VogelhausClases.ctx.lineTo(75, -70);
+            L09_VogelhausClases.ctx.lineTo(75.25, -40);
+            L09_VogelhausClases.ctx.lineTo(75, -35);
+            L09_VogelhausClases.ctx.lineTo(65, -25);
+            L09_VogelhausClases.ctx.closePath();
+            L09_VogelhausClases.ctx.fillStyle = this.style;
+            L09_VogelhausClases.ctx.fill();
             L09_VogelhausClases.ctx.stroke();
-            // ctx.moveTo(0,0)
-            // ctx.lineTo(70,-70);
-            // ctx.lineTo(-80,-80);
-            // ctx.lineTo(0,-90);
-            // ctx.lineTo(-80,-120);
-            // ctx.lineTo(60,-130);
-            // ctx.lineTo(90,-120);
-            // ctx.lineTo(100,-140);
-            // ctx.lineTo(110,-160);
-            // ctx.lineTo(130,-170);
-            // ctx.lineTo(180,-150);
-            // ctx.lineTo(150,-140);
-            // ctx.lineTo(155,-80);
-            // ctx.lineTo(150,-70);
-            // ctx.lineTo(130,-50);
-            // ctx.closePath;
-            // ctx.fillStyle =  "hsl(" + Math.random() * this.size + ", 50%, 25%)";
-            // ctx.fill();
-            // ctx.beginPath();
-            // ctx.save();
-            // ctx.lineTo(110,-160);
-            // ctx.lineTo(130,-170);
-            // ctx.lineTo(180,-150);
-            // ctx.closePath;
-            // ctx.fillStyle = "white";
-            //  ctx.fill();
+            L09_VogelhausClases.ctx.beginPath();
+            L09_VogelhausClases.ctx.lineTo(55, -80);
+            L09_VogelhausClases.ctx.lineTo(65, -85);
+            L09_VogelhausClases.ctx.lineTo(90, -75);
+            L09_VogelhausClases.ctx.fillStyle = "white";
+            L09_VogelhausClases.ctx.closePath();
+            L09_VogelhausClases.ctx.fill();
+            L09_VogelhausClases.ctx.stroke();
             L09_VogelhausClases.ctx.restore();
         }
     }

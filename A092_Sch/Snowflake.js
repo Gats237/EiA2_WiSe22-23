@@ -9,13 +9,14 @@ var L09_VogelhausClases;
         constructor(_size) {
             console.log("ConstructorSnow");
             this.positon = new L09_VogelhausClases.Vector(0, 0);
-            this.positon.random(0, 1500);
+            this.positon.random(10000, 25000);
             this.velocity = new L09_VogelhausClases.Vector(0, 0);
-            this.velocity.random(20, 2000);
+            this.velocity.random(2000, 2000);
             this.size = _size;
         }
         move(_timeslice) {
-            let offset = new L09_VogelhausClases.Vector(this.velocity.x, this.velocity.y);
+            let moveminus = this.velocity.y * (-1);
+            let offset = new L09_VogelhausClases.Vector(this.velocity.x, moveminus);
             offset.scale(_timeslice);
             this.positon.add(offset);
             if (this.positon.x < 0)
@@ -28,9 +29,10 @@ var L09_VogelhausClases;
                 this.positon.y -= L09_VogelhausClases.ctx.canvas.height;
         }
         draw() {
+            let moveminusx = this.velocity.y * (-1);
             L09_VogelhausClases.ctx.beginPath();
             L09_VogelhausClases.ctx.save();
-            L09_VogelhausClases.ctx.translate(this.positon.x, this.positon.y);
+            L09_VogelhausClases.ctx.translate(moveminusx, this.positon.y);
             L09_VogelhausClases.ctx.arc(0, 0, this.size, 2, 4 * Math.PI);
             L09_VogelhausClases.ctx.fillStyle = " white";
             L09_VogelhausClases.ctx.closePath();

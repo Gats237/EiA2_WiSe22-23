@@ -46,37 +46,18 @@ namespace L09_VogelhausClases {
         Schneemann({ x: 700, y: 2300 });
         posTrees();
         drawBirdathouse({ x: 130, y: 1700 });
+        // drawpickBirds({x: 150, y: 2200});
+        
         drawSnow();
         drawBirds();
+       // drawpickBirdsup();
         imgData  = ctx.getImageData (0, 0, canvas.width, canvas.height);
         setInterval(update, 100);
+   
         
        
     }
 
-    
-
-    // function snowPos(): void {
-
-
-    //     for (let i: number = 0; i < 250; i++) {
-    //         let snowposX: number = ctx.canvas.width * Math.random();
-    //         let snowposY: number = ctx.canvas.height * Math.random() * (-2);
-
-    //         drawSnow();
-    //     }
-    // }
-
-
-    // function birds(): void {
-
-
-    //     for (let i: number =0; i < 20; i++) {
-    //         let birdposX: number= ctx.canvas.width*Math.random();
-    //         let birdposY: number= ctx.canvas.height*Math.random();
-    //         drawBirds({ x:birdposX, y:birdposY });
-    //     }
-    // }
 
 
     function posTrees(): void {
@@ -269,7 +250,7 @@ namespace L09_VogelhausClases {
             gradient1.addColorStop(0, "white");
             gradient1.addColorStop(0.1, " green");
             gradient1.addColorStop(1.0, " green");
-            ctx.fillStyle = "gradient1";
+            ctx.fillStyle = "white";
             ctx.closePath();
             ctx.fill();
             ctx.stroke();
@@ -279,43 +260,6 @@ namespace L09_VogelhausClases {
             
         }
     }
-
-
-    // function drawBirds (_postion: Vector){
-
-    //             ctx.save();
-    //             ctx.translate(_postion.x, _postion.y);
-    //             ctx.beginPath();
-    //             ctx.moveTo(0,0)
-    //             ctx.lineTo(70,-70);
-    //             ctx.lineTo(-80,-80);
-    //             ctx.lineTo(0,-90);
-    //             ctx.lineTo(-80,-120);
-    //             ctx.lineTo(60,-130);
-    //             ctx.lineTo(90,-120);
-    //             ctx.lineTo(100,-140);
-    //             ctx.lineTo(110,-160);
-    //             ctx.lineTo(130,-170);
-    //             ctx.lineTo(180,-150);
-    //             ctx.lineTo(150,-140);
-    //             ctx.lineTo(155,-80);
-    //             ctx.lineTo(150,-70);
-    //             ctx.lineTo(130,-50);
-    //             ctx.fillStyle =  "hsl(" + Math.random() * 180 + ", 50%, 25%)";
-    //             ctx.fill();
-    //             ctx.stroke();
-    //             ctx.beginPath();
-    //             ctx.lineTo(110,-160);
-    //             ctx.lineTo(130,-170);
-    //             ctx.lineTo(180,-150);
-    //             ctx.fillStyle = "white";
-    //             ctx.fill();
-    //             ctx.stroke();
-    //             ctx.fill();
-    //             ctx.stroke();
-    //             ctx.restore();
-    //         }
-
 
 
     function drawBirdathouse(_postion: Vector) {
@@ -352,13 +296,11 @@ namespace L09_VogelhausClases {
         ctx.stroke();
         ctx.restore();
     }
-
-
-
+    
     function drawSnow() {
         
         //window.setInterval (update,200);
-        for (let index = 0; index < 100; index++) {
+        for (let index = 0; index < 400; index++) {
             let snowflake: Snowflake = new Snowflake(Math.random()*20);
      
             snowflakeArray.push(snowflake);
@@ -371,14 +313,27 @@ namespace L09_VogelhausClases {
 
     let snowflakeArray: Snowflake[]=[];
     let birdArray: Bird[]=[];
-
+    let birdpickArray: Birdpick []=[];
+    console.log(birdpickArray);
+    
+    // function drawpickBirdsup(){
+    //     console.log("q");
+    
+            
+    //         for (let index = 0; index < 2; index++) {
+    //             let birdpick1: Birdpick = new Birdpick();
+    
+    //             birdpickArray.push(birdpick1);
+             
+    //         }
+    //     }
     
     
     function drawBirds(){
-    console.log("q");
+    
 
         
-        for (let index = 0; index < 100; index++) {
+        for (let index = 0; index < 10; index++) {
             let bird1: Bird = new Bird();
 
             birdArray.push(bird1);
@@ -399,11 +354,24 @@ namespace L09_VogelhausClases {
          snowflakeArray[i].draw();
         }
         ctx.restore();
+        ctx.save();
         for(let i= 0; i<birdArray.length; i++){
             birdArray[i].move(1/50);
-            birdArray[i].drawbirds();}
-    }
-      
+            birdArray[i].drawbirds();
+        }
+        ctx.restore();
+        // ctx.save();
+        // for (let i =0; i <birdpickArray.length; i++) {
+        //     birdpickArray[i].drawbirds();
+            
+            
+        // }
 
+    }
+
+   
+
+
+  
 
 }

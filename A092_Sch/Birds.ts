@@ -6,13 +6,15 @@ namespace L09_VogelhausClases{
         velocity: Vector;
         type: number;
         size: number;
+        style:any;
       
         constructor() {
            
             this.positon= new Vector(0,0);
             this.positon.random(0,100)
-            this.velocity = new Vector(0, 0);
-            this.velocity.random(20, -10);
+            this.velocity = new Vector(1, 200);
+            this.velocity.random(20, 1000);
+            this.style="hsl(" + Math.random() * 180 + ", 50%, 25%)"
         }
         
 
@@ -33,40 +35,40 @@ namespace L09_VogelhausClases{
             }
 
             drawbirds(){  
-               
                 
-                ctx.beginPath();
+                
+                
                 ctx.save();
-                ctx.lineTo(0,0);
-                ctx.strokeStyle="black";
+                ctx.translate(this.positon.y, this.positon.x);
+                ctx.beginPath();
+                ctx.moveTo(0, 0)
+                ctx.lineTo(35, -35);
+                ctx.lineTo(-40, -40);
+                ctx.lineTo(0, -45);
+                ctx.lineTo(-40, -60);
+                ctx.lineTo(30, -65);
+                ctx.lineTo(45, -60);
+                ctx.lineTo(50, -70);
+                ctx.lineTo(55, -80);
+                ctx.lineTo(65, -85);
+                ctx.lineTo(90, -75);
+                ctx.lineTo(75, -70);
+                ctx.lineTo(75.25, -40);
+                ctx.lineTo(75, -35);
+                ctx.lineTo(65, -25);
+                ctx.closePath();
+                ctx.fillStyle = this.style;
+                ctx.fill();
                 ctx.stroke();
-                            // ctx.moveTo(0,0)
-                            // ctx.lineTo(70,-70);
-                            // ctx.lineTo(-80,-80);
-                            // ctx.lineTo(0,-90);
-                            // ctx.lineTo(-80,-120);
-                            // ctx.lineTo(60,-130);
-                            // ctx.lineTo(90,-120);
-                            // ctx.lineTo(100,-140);
-                            // ctx.lineTo(110,-160);
-                            // ctx.lineTo(130,-170);
-                            // ctx.lineTo(180,-150);
-                            // ctx.lineTo(150,-140);
-                            // ctx.lineTo(155,-80);
-                            // ctx.lineTo(150,-70);
-                            // ctx.lineTo(130,-50);
-                            // ctx.closePath;
-                            // ctx.fillStyle =  "hsl(" + Math.random() * this.size + ", 50%, 25%)";
-                            // ctx.fill();
-                            // ctx.beginPath();
-                            // ctx.save();
-                            // ctx.lineTo(110,-160);
-                            // ctx.lineTo(130,-170);
-                            // ctx.lineTo(180,-150);
-                            // ctx.closePath;
-                            // ctx.fillStyle = "white";
-                            //  ctx.fill();
-                            ctx.restore();                          
+                ctx.beginPath();
+                ctx.lineTo(55, -80);
+                ctx.lineTo(65, -85);
+                ctx.lineTo(90, -75);
+                ctx.fillStyle = "white";
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke();
+                ctx.restore();                          
                    }
                 
             }
