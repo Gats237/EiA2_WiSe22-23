@@ -8,6 +8,7 @@ Quellen:
 */
 
 namespace A05_Einkaufsliste_Client{
+    
     let itemNumber: number = 0;
     let date: Date = new Date();
     let dateWithoutTime: string = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear();
@@ -32,10 +33,10 @@ namespace A05_Einkaufsliste_Client{
     }
 
     async function handleLoad(_event: Event): Promise<void> {
-        let addButton: HTMLButtonElement = document.querySelector("button#add");
+        let addButton: HTMLButtonElement = <HTMLButtonElement>document.querySelector("button#add");
         addButton.addEventListener("click", itemAdd);
 
-        let response: Response = await fetch("https://jonasatzenhofer.github.io/EiA2_WiSe_22-23/A05/datastructure.json");
+        let response: Response = await fetch("https://github.com/Gats237/EiA2_WiSe22-23/blob/main/L05/A05_Interface.json");
         let item: string = await response.text();
         let data: Data = JSON.parse(item);
 
@@ -52,8 +53,8 @@ namespace A05_Einkaufsliste_Client{
         let newItem: string = values[0].newItem;
         let amount: number = values[0].amount;
         let comment: string = values[0].comment;
-        let list: HTMLElement = document.getElementById("list");
-        let newDiv: HTMLDivElement = document.createElement("div");
+        let list: HTMLElement = <HTMLElement> document.getElementById("list");
+        let newDiv: HTMLDivElement = <HTMLDivElement> document.createElement("div");
         let newInput: HTMLInputElement = document.createElement("input");
         let divItemData: HTMLDivElement = document.createElement("div");
         
@@ -84,10 +85,10 @@ namespace A05_Einkaufsliste_Client{
         
     async function itemAdd(): Promise<void> {
         let formData: FormData = new FormData(document.querySelector("form"));
-        let newItem: FormDataEntryValue = formData.get("newItem");
-        let amount: FormDataEntryValue = formData.get("amount");
-        let comment: FormDataEntryValue = formData.get("comment");
-        let list: HTMLElement = document.getElementById("list");
+        let newItem: FormDataEntryValue =<FormDataEntryValue> formData.get("newItem");
+        let amount: FormDataEntryValue = <FormDataEntryValue> formData.get("amount");
+        let comment: FormDataEntryValue = <FormDataEntryValue> formData.get("comment");
+        let list: HTMLElement = <HTMLElement> document.getElementById("list");
         let newDiv: HTMLDivElement = document.createElement("div");
         let newInput: HTMLInputElement = document.createElement("input");
         let divItemData: HTMLDivElement = document.createElement("div");
@@ -188,8 +189,8 @@ namespace A05_Einkaufsliste_Client{
         let triggerNum: string = trigger.replace(/\D/g, "");
         let identifyer: number = parseInt(triggerNum);
 
-        let list: HTMLElement = document.getElementById("list");
-        let remIt: HTMLElement = document.getElementById("lister" + identifyer);
+        let list: HTMLElement = <HTMLElement> document.getElementById("list");
+        let remIt: HTMLElement =  <HTMLElement> document.getElementById("lister" + identifyer);
         list.removeChild(remIt);
     }
     

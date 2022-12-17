@@ -11,7 +11,6 @@ zusammen gearbeitet Jonas Atzenhofer.Robert Schindler
 var ShoppingList_06;
 (function (ShoppingList_06) {
     let itemNumber = 0;
-    let elementCounter = 0;
     let date = new Date();
     let dateNoTime = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear();
     let url = "https://webuser.hs-furtwangen.de/~pilshenn/Database/dataList.json";
