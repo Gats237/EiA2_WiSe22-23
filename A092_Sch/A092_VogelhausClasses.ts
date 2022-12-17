@@ -375,7 +375,7 @@ namespace L09_VogelhausClases {
             birdArray[i].move(1/50);
             birdArray[i].drawbirds();
         }
-        drawpickBirdsup(false);
+        //drawpickBirdsup(false);
         ctx.restore();
         // ctx.save();
         // for (let i =0; i <birdpickArray.length; i++) {
