@@ -3,7 +3,7 @@ namespace L09_VogelhausClases{
     export class Birdpick {
   
 
-        positon: Vector;
+        position: Vector;
         velocity: Vector;
         type: number;
         size: number;
@@ -12,8 +12,8 @@ namespace L09_VogelhausClases{
       
         constructor() {
           
-            this.positon= new Vector(0,0);
-            this.positon.random(222,44)
+            this.position= new Vector(0,0);
+            this.position.random(222,44)
             this.velocity = new Vector(0, 0);
             this.velocity.random(20, 10000);
             this.style="hsl(" + Math.random() * 180 + ", 50%, 25%)"
@@ -25,23 +25,25 @@ namespace L09_VogelhausClases{
         move(_timeslice: number): void {
             let offset: Vector = new Vector(this.velocity.x, this.velocity.y);
             offset.scale(_timeslice);
-            this.positon.add(offset);
+            this.position.add(offset);
 
-            if (this.positon.x < 0) 
-                this.positon.x += ctx.canvas.width;
-             if (this.positon.y< 0)
-             this.positon.y += ctx.canvas.height;
-            if (this.positon.x > ctx.canvas.width) 
-            this.positon.x -= ctx.canvas.width;
-            if (this.positon.y > ctx.canvas.height) 
-            this.positon.y -= ctx.canvas.height;
+            if (this.position.x < 0) 
+                this.position.x += ctx.canvas.width;
+             if (this.position.y< 0)
+             this.position.y += ctx.canvas.height;
+            if (this.position.x > ctx.canvas.width) 
+            this.position.x -= ctx.canvas.width;
+            if (this.position.y > ctx.canvas.height) 
+            this.position.y -= ctx.canvas.height;
             }
 
-            drawbirds(){ 
+            drawbirds(_eating:boolean){ 
                 
           
                   
             if (this.eating != true) {
+                console.log("H");
+                
                 ctx.save();
                 ctx.beginPath();
                 ctx.moveTo(0,0)
