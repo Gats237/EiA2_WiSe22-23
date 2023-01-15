@@ -15,8 +15,6 @@ var L10_Vogelhaus_Polymorphie;
             // 
         }
         move(_timeslice) {
-            let randomNum = Math.random() * (800 - 1) + 1;
-            console.log("move");
             let offset = this.velocity.copy();
             offset.scale(_timeslice);
             this.position.add(offset);

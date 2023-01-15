@@ -322,6 +322,8 @@ namespace L10_Vogelhaus_Polymorphie {
         ctx.restore();
     }
 }
+}
+
     
     // function drawSnow() {
         
@@ -411,7 +413,6 @@ namespace L10_Vogelhaus_Polymorphie {
             
         // }
 
-    }
 
    
 

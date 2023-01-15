@@ -252,61 +252,61 @@ var L10_Vogelhaus_Polymorphie;
             L10_Vogelhaus_Polymorphie.ctx.restore();
         }
     }
-    // function drawSnow() {
-    //     //window.setInterval (update,200);
-    //     for (let index = 0; index < 400; index++) {
-    //         let snowflake: Snowflake = new Snowflake(Math.random()*20);
-    //         snowflakeArray.push(snowflake);
-    //     }
-    //     console.log(snowflakeArray);
-    // }
-    // let snowflakeArray: Snowflake[]=[];
-    // let birdArray: Birds[]=[];
-    // let birdpickArray: Birdpick []=[];
-    // console.log(birdpickArray);
-    //     function updateBird(): void {
-    //         drawpickBirdsup(true);
-    //     }
-    // //Picken funktioniert nicht
-    //     function drawpickBirdsup(_update:boolean){
-    //         console.log("q");
-    //         for (let bird of Birdpick) {
-    //             ctx.save();
-    //             bird.draw();
-    //             ctx.restore();
-    //             if (_update) {
-    //                 bird.eat(0 / 150);
-    //             }
-    //             for (let index = 0; index < 2; index++) {
-    //                 let birdpick1: Birdpick = new Birdpick();
-    //                 birdpickArray.push(birdpick1);
-    //             }
-    //         }
-    //     }
-    // function drawBirds():void{
-    //     for (let index = 0; index < 10; index++) {
-    //         let bird1: Birds = new Birds (0,0);
-    //         birdArray.push(bird1);
-    //         console.log(birdArray);
-    //     }}
-    // export function update(): void{
-    //     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
-    //     ctx.putImageData(imgData,0 ,0);
-    //     ctx.save();
-    //     for(let i= 0; i<snowflakeArray.length; i++){
-    //      snowflakeArray[i].move(1/50);
-    //      snowflakeArray[i].draw();
-    //     }
-    //     ctx.restore();
-    //     ctx.save();
-    //     for(let i= 0; i<birdArray.length; i++){
-    //         birdArray[i].move(1/50);
-    //         birdArray[i].drawbirds();
-    //     }
-    //drawpickBirdsup(false);
-    // ctx.save();
-    // for (let i =0; i <birdpickArray.length; i++) {
-    //     birdpickArray[i].drawbirds();
-    // }
 })(L10_Vogelhaus_Polymorphie || (L10_Vogelhaus_Polymorphie = {}));
+// function drawSnow() {
+//     //window.setInterval (update,200);
+//     for (let index = 0; index < 400; index++) {
+//         let snowflake: Snowflake = new Snowflake(Math.random()*20);
+//         snowflakeArray.push(snowflake);
+//     }
+//     console.log(snowflakeArray);
+// }
+// let snowflakeArray: Snowflake[]=[];
+// let birdArray: Birds[]=[];
+// let birdpickArray: Birdpick []=[];
+// console.log(birdpickArray);
+//     function updateBird(): void {
+//         drawpickBirdsup(true);
+//     }
+// //Picken funktioniert nicht
+//     function drawpickBirdsup(_update:boolean){
+//         console.log("q");
+//         for (let bird of Birdpick) {
+//             ctx.save();
+//             bird.draw();
+//             ctx.restore();
+//             if (_update) {
+//                 bird.eat(0 / 150);
+//             }
+//             for (let index = 0; index < 2; index++) {
+//                 let birdpick1: Birdpick = new Birdpick();
+//                 birdpickArray.push(birdpick1);
+//             }
+//         }
+//     }
+// function drawBirds():void{
+//     for (let index = 0; index < 10; index++) {
+//         let bird1: Birds = new Birds (0,0);
+//         birdArray.push(bird1);
+//         console.log(birdArray);
+//     }}
+// export function update(): void{
+//     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+//     ctx.putImageData(imgData,0 ,0);
+//     ctx.save();
+//     for(let i= 0; i<snowflakeArray.length; i++){
+//      snowflakeArray[i].move(1/50);
+//      snowflakeArray[i].draw();
+//     }
+//     ctx.restore();
+//     ctx.save();
+//     for(let i= 0; i<birdArray.length; i++){
+//         birdArray[i].move(1/50);
+//         birdArray[i].drawbirds();
+//     }
+//drawpickBirdsup(false);
+// ctx.save();
+// for (let i =0; i <birdpickArray.length; i++) {
+//     birdpickArray[i].drawbirds();
+// }
 //# sourceMappingURL=A102_VogelhausClasses.js.map

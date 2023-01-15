@@ -3,6 +3,7 @@ var L10_Vogelhaus_Polymorphie;
 (function (L10_Vogelhaus_Polymorphie) {
     class Birds extends L10_Vogelhaus_Polymorphie.Moveable {
         size;
+        //Ich verstehe nicht warum ich hier einen Fehler document.getElementById("canvas") bekomme
         constructor(_size, _position) {
             if (_position) {
                 super(_position);
