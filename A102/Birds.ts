@@ -2,21 +2,25 @@ namespace L10_Vogelhaus_Polymorphie{
 
       export class Birds extends Moveable {
 
-       
-        type: number;
         size: number;
-        style:any;
-      
-        constructor(_position: Vector) {
-           
-            super(_position);
-            this.position= new Vector(0,0);
-            this.position.random(0,100)
-            this.velocity = new Vector(1, 200);
-            this.velocity.random(20, 1000);
-            this.style="hsl(" + Math.random() * 180 + ", 50%, 25%)"
+
+        constructor(_size: number, _position?: Vector) {
+
+            if (_position) {
+                super(_position);
+                this.position = _position.copy();
+            } else {
+                let randomXStartPosition: number = Math.random() * document.getElementById("canvas").clientWidth;
+                let randomYStartPosition: number = Math.random() * document.getElementById("canvas").clientHeight;
+                let newPosition: Vector = new Vector (randomXStartPosition, randomYStartPosition / 2);
+                super(newPosition);
+                this.position = newPosition;
+            }
+            let birdsFlyingSpeed: number = Math.random() * 30 + 30;
+            this.velocity = new Vector(birdsFlyingSpeed, 1);
+            
+            this.size = _size;
         }
-        
 
 
         move(_timeslice: number): void {
@@ -34,7 +38,7 @@ namespace L10_Vogelhaus_Polymorphie{
             this.position.y -= ctx.canvas.height;
             }
 
-            drawbirds(){  
+            draw(): void {
                 
                 
                 
@@ -57,7 +61,7 @@ namespace L10_Vogelhaus_Polymorphie{
                 ctx.lineTo(75, -35);
                 ctx.lineTo(65, -25);
                 ctx.closePath();
-                ctx.fillStyle = this.style;
+                ctx.fillStyle = "brown";
                 ctx.fill();
                 ctx.stroke();
                 ctx.beginPath();

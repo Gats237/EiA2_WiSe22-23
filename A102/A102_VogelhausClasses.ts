@@ -16,7 +16,7 @@ namespace L10_Vogelhaus_Polymorphie {
     export let ctx: CanvasRenderingContext2D;
     export let  canvas: HTMLCanvasElement;
     let moveables: Moveable[] = []; 
-    let landscape: ImageData;
+    let imgData: ImageData;
 
     interface Vector {
         x: number;
@@ -25,18 +25,48 @@ namespace L10_Vogelhaus_Polymorphie {
     }
 
 
-    function handleLoad(_event: Event): void {
+
+
+
+    export function create(): void {
+        
+        for (let index: number = 0; index < 100; index++) {
+            let snowflakeSize: number = Math.random() * 10;
+            let snowflake: Snowflake = new Snowflake(snowflakeSize); 
+            moveables.push(snowflake); 
+        }
+
+        for (let index2: number = 0; index2 < 20; index2++) {
+            let bird: Birds= new Birds(0);
+            moveables.push(bird);
+        }
+    }
+
+    export function update(): void {
+        ctx.putImageData(imgData, 0, 0); 
+        for (let snowflake of moveables) {
+            snowflake.move(1 / 50);
+            snowflake.draw();
+        }
+        for (let bird of moveables) {
+            bird.move(1 / 50);
+            bird.draw();
+        }
+    }    
+
+    function handleLoad(_event?: Event): void {
         console.log("Hallo");
+
 
         let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
         if (!canvas)
             return;
         ctx = <CanvasRenderingContext2D>canvas.getContext("2d");
+
+
         let horizon: number = ctx.canvas.height * 0.6;
         
         ctx.save();
-        create();
-        update();
         drawbackround();
         drawSun({ x: 100, y: 75 });
         drawMountains({ x: 0, y: horizon }, 450, 900, "grey", "white");
@@ -47,43 +77,13 @@ namespace L10_Vogelhaus_Polymorphie {
         Schneemann({ x: 700, y: 2300 });
         posTrees();
         drawBirdathouse({ x: 130, y: 1700 });
-       
-        landscape = ctx.getImageData (0, 0, canvas.width, canvas.height);
-        ctx.restore();
+        imgData  = ctx.getImageData (0, 0, canvas.width, canvas.height);
         setInterval(update, 100);
-   
-       
-    }
+        create();
+        setInterval(update, 10);
 
 
 
-    export function create(): void {
-        
-        for (let index: number = 0; index < 100; index++) {
-            let snowflake: Snowflake = new Snowflake(1); 
-            moveables.push(snowflake); 
-        }
-
-        for (let index2: number = 0; index2 < 20; index2++) {
-            let bird: Birds = new Birds(40);
-            moveables.push(bird);}
-    }
-
-
-
-    export function update(): void {
-        console.log("update");
-        ctx.putImageData(, 0, 0); 
-        // crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
-        for (let snowflake of moveables) {
-            snowflake.move(1 / 50);
-            snowflake.draw();
-        }
-        for (let bird of moveables) {
-            bird.move(1 / 50);
-            bird.draw();
-        }
-    } 
 
     function posTrees(): void {
 
@@ -321,12 +321,13 @@ namespace L10_Vogelhaus_Polymorphie {
         ctx.stroke();
         ctx.restore();
     }
+}
     
     // function drawSnow() {
         
     //     //window.setInterval (update,200);
     //     for (let index = 0; index < 400; index++) {
-    //         let snowflake: Snowflake = new snowflake (Math.random()*20);
+    //         let snowflake: Snowflake = new Snowflake(Math.random()*20);
      
     //         snowflakeArray.push(snowflake);
            
@@ -336,10 +337,10 @@ namespace L10_Vogelhaus_Polymorphie {
 
     // }
 
-    let snowflakeArray: Snowflake[]=[];
-    let birdArray: Birds[]=[];
-    let birdpickArray: Birdpick []=[];
-    console.log(birdpickArray);
+    // let snowflakeArray: Snowflake[]=[];
+    // let birdArray: Birds[]=[];
+    // let birdpickArray: Birdpick []=[];
+    // console.log(birdpickArray);
     
 
 
@@ -386,23 +387,23 @@ namespace L10_Vogelhaus_Polymorphie {
 
 
 
-    export function update(): void{
+    // export function update(): void{
        
-        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
-        ctx.putImageData(imgData,0 ,0);
-        ctx.save();
-        for(let i= 0; i<snowflakeArray.length; i++){
-         snowflakeArray[i].move(1/50);
-         snowflakeArray[i].draw();
-        }
-        ctx.restore();
-        ctx.save();
-        for(let i= 0; i<birdArray.length; i++){
-            birdArray[i].move(1/50);
-            birdArray[i].drawbirds();
-        }
+    //     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+    //     ctx.putImageData(imgData,0 ,0);
+    //     ctx.save();
+    //     for(let i= 0; i<snowflakeArray.length; i++){
+    //      snowflakeArray[i].move(1/50);
+    //      snowflakeArray[i].draw();
+    //     }
+    //     ctx.restore();
+    //     ctx.save();
+    //     for(let i= 0; i<birdArray.length; i++){
+    //         birdArray[i].move(1/50);
+    //         birdArray[i].drawbirds();
+    //     }
         //drawpickBirdsup(false);
-        ctx.restore();
+       
         // ctx.save();
         // for (let i =0; i <birdpickArray.length; i++) {
         //     birdpickArray[i].drawbirds();
@@ -415,6 +416,5 @@ namespace L10_Vogelhaus_Polymorphie {
    
 
 
-}
 
 

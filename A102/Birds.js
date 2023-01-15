@@ -2,16 +2,22 @@
 var L10_Vogelhaus_Polymorphie;
 (function (L10_Vogelhaus_Polymorphie) {
     class Birds extends L10_Vogelhaus_Polymorphie.Moveable {
-        type;
         size;
-        style;
-        constructor(_position) {
-            super(_position);
-            this.position = new L10_Vogelhaus_Polymorphie.Vector(0, 0);
-            this.position.random(0, 100);
-            this.velocity = new L10_Vogelhaus_Polymorphie.Vector(1, 200);
-            this.velocity.random(20, 1000);
-            this.style = "hsl(" + Math.random() * 180 + ", 50%, 25%)";
+        constructor(_size, _position) {
+            if (_position) {
+                super(_position);
+                this.position = _position.copy();
+            }
+            else {
+                let randomXStartPosition = Math.random() * document.getElementById("canvas").clientWidth;
+                let randomYStartPosition = Math.random() * document.getElementById("canvas").clientHeight;
+                let newPosition = new L10_Vogelhaus_Polymorphie.Vector(randomXStartPosition, randomYStartPosition / 2);
+                super(newPosition);
+                this.position = newPosition;
+            }
+            let birdsFlyingSpeed = Math.random() * 30 + 30;
+            this.velocity = new L10_Vogelhaus_Polymorphie.Vector(birdsFlyingSpeed, 1);
+            this.size = _size;
         }
         move(_timeslice) {
             let offset = new L10_Vogelhaus_Polymorphie.Vector(this.velocity.x, this.velocity.y);
@@ -26,7 +32,7 @@ var L10_Vogelhaus_Polymorphie;
             if (this.position.y > L10_Vogelhaus_Polymorphie.ctx.canvas.height)
                 this.position.y -= L10_Vogelhaus_Polymorphie.ctx.canvas.height;
         }
-        drawbirds() {
+        draw() {
             L10_Vogelhaus_Polymorphie.ctx.save();
             L10_Vogelhaus_Polymorphie.ctx.translate(this.position.y, this.position.x);
             L10_Vogelhaus_Polymorphie.ctx.beginPath();
@@ -46,7 +52,7 @@ var L10_Vogelhaus_Polymorphie;
             L10_Vogelhaus_Polymorphie.ctx.lineTo(75, -35);
             L10_Vogelhaus_Polymorphie.ctx.lineTo(65, -25);
             L10_Vogelhaus_Polymorphie.ctx.closePath();
-            L10_Vogelhaus_Polymorphie.ctx.fillStyle = this.style;
+            L10_Vogelhaus_Polymorphie.ctx.fillStyle = "brown";
             L10_Vogelhaus_Polymorphie.ctx.fill();
             L10_Vogelhaus_Polymorphie.ctx.stroke();
             L10_Vogelhaus_Polymorphie.ctx.beginPath();
