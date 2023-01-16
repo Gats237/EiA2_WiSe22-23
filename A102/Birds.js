@@ -16,8 +16,8 @@ var L10_Vogelhaus_Polymorphie;
                 super(newPosition);
                 this.position = newPosition;
             }
-            let birdsFlyingSpeed = Math.random() * 30 + 30;
-            this.velocity = new L10_Vogelhaus_Polymorphie.Vector(birdsFlyingSpeed, 1);
+            let birdspeed = Math.random() * 30 + 30;
+            this.velocity = new L10_Vogelhaus_Polymorphie.Vector(birdspeed, 1);
             this.size = _size;
         }
         move(_timeslice) {
