@@ -18,8 +18,8 @@ namespace L10_Vogelhaus_Polymorphie{
                 super(newPosition);
                 this.position = newPosition;
             }
-            let birdsFlyingSpeed: number = Math.random() * 30 + 30;
-            this.velocity = new Vector(birdsFlyingSpeed, 1);
+            let  birdspeed: number = Math.random() * 30 + 30;
+            this.velocity = new Vector(birdspeed, 1);
             
             this.size = _size;
         }

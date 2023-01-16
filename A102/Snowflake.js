@@ -40,8 +40,8 @@ var L10_Vogelhaus_Polymorphie;
             L10_Vogelhaus_Polymorphie.ctx.arc(0, 0, this.size, 0, 2 * Math.PI);
             L10_Vogelhaus_Polymorphie.ctx.fillStyle = " white";
             L10_Vogelhaus_Polymorphie.ctx.closePath();
-            L10_Vogelhaus_Polymorphie.ctx.fill();
-            L10_Vogelhaus_Polymorphie.ctx.restore();
+            ctx.fill();
+           ctx.restore();
         }
     }
     L10_Vogelhaus_Polymorphie.Snowflake = Snowflake;
