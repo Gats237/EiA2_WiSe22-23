@@ -182,20 +182,7 @@ body {
 
 
 
-
-#ResultR {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 20px 0;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 2px 2px 2px #ccc;
- 
-}
-
-
-#richtig {
+#Check {
     background-color: #4CAF50; /* Green */
     color: white;
     padding: 10px;
@@ -205,8 +192,10 @@ body {
     box-shadow: 2px 2px 2px #ccc;
 }
 
-#falsch {
-    background-color: #f44336; /* Red */
+
+
+#nextQ {
+    background-color: #4CAF50; /* Green */
     color: white;
     padding: 10px;
     text-align: center;
@@ -214,3 +203,53 @@ body {
     border-radius: 5px;
     box-shadow: 2px 2px 2px #ccc;
 }
+
+
+
+#pointvalue  {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 310px  ;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    }
+
+ #wrongcounter-value{
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        width: 310px  ;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    }
+
+    #questioncounter{
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        width: 310px  ;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    }
