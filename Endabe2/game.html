@@ -8,11 +8,15 @@
     <link rel ="stylesheet" href="./style.css"></link rel>
     <script src="./sript.js"></script>
 </head>
-<body>
+
     
-</body>
+
 </html>
 
+<footer>Henning Pils 26385</footer>
+<br>
+<body>
+    
 <div id="quiz">
     <div id="start-btn"></div>
     
@@ -20,10 +24,10 @@
 
     <div id="Themengebiet" >
         Auswahl des Themengebietes
-        <button id="T1">HTML</button> <br>
-        <button id="T2">CSS</button> <br>
-        <button id="T3">Typescript</button> <br>
-        <button id="T4">Gemischt</button>
+        <button id="T1" class="TButton" >HTML</button> <br>
+        <button id="T2" class="TButton">CSS</button> <br>
+        <button id="T3" class="TButton" >Typescript</button> <br>
+        <button id="T4" class="TButton">Gemischt</button>
 
     </div>
 
@@ -32,15 +36,15 @@
         <div id="question">Frage</div>
         
         <div id="answers">
-        <button id="A">A</button>
-        <button id="B">B</button>
-        <button id="C">C</button>
-        <button id="D">D</button>
+        <button class="TButton"id="A">A</button>
+        <button class="TButton"id="B">B</button>
+        <button class="TButton" id="C">C</button>
+        <button class="TButton" id="D">D</button>
             </div>
         
-         <div id="answerwithlink" >Antwort
-        <a href="" id="Erklärung"></a>
-
+         <div id="answerwithlink" >Zum Nachlesen <br>
+       <a   href=""  target="_blank" id="Erklärung" class="TButton" >Link zur Antwort</a>
+    
          </div>
          <div id="WeiterButton" style="display: none"> <p id="Check">Richtig/Falsch</p>
             <button id="nextQ"> Nächste Frage</button>
@@ -50,11 +54,13 @@
 
         </div>
       
-         <div id="pointvalue" style="display: none">Punkte</div>
-         <div id="wrongcounter-value" style="display: none" >Falsch Beantwortet</div>
-         <div  id="questioncounter" style="display: none">Verusche</div>
+         <div class="TButton" id="pointvalue" style="display: none">Punkte</div>
+         <div class="TButton" id="wrongcounter-value" style="display: none" >Falsch Beantwortet</div>
+         <div class="TButton" id="questioncounter" style="display: none">Verusche</div>
 
-         <a href="start.html" id="nochmal" style="display: none" >Nochmal spielen</button>
+         <a href="start.html" id="nochmal" class="TButton" style="display: none" >Nochmal spielen</button>
     </div>
 
 </div>
+</body>
+
