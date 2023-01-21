@@ -6,6 +6,10 @@ var Auswahl;
     let Questions = [];
     let Question;
     let Buttonactive = true;
+    let buttonA;
+    let buttonB;
+    let buttonC;
+    let buttonD;
     //Counter Richtige Fragen/ Falsche Fragen/ Punkte   / Fragen
     let pointcounter = 0;
     let wrongquestioncounter = 0;
@@ -49,7 +53,7 @@ var Auswahl;
         { question: "Was können Operatoren nicht", answers: ["Daten verabeiten", "Daten verketten", "Daten berechnen", "Daten löschen"], correctAnswer: "Daten löschen", link: "https://felix.hs-furtwangen.de/m/346b537351ce17776f05e15685a23ea0/L06-08_Einstieg_TypeScript.pdf" },
         { question: "Wie wird der Vorgang genannt bei dem das Script Zeile für Zeile gelesen wird und interpretiert?", answers: ["parsen", "read", "inspect", "analyze"], correctAnswer: "parsen", link: "https://felix.hs-furtwangen.de/m/346b537351ce17776f05e15685a23ea0/L06-08_Einstieg_TypeScript.pdf" },
         { question: "Wie kann man verhindern, dass alle Skriptanweisungen automatisch abgearbeitet werden", answers: ["Funktionen", "Auf Escape drücken", "Einen console.log ins Script einbauen", "Eine Variable mit let:stop deklarieren"], correctAnswer: "https://felix.hs-furtwangen.de/m/53faf22ce5d2821f77321cc06b9d4755/L07-01_Funktionen.pdf", link: "Funktionen" },
-        { question: "Wie nennt man diese Klammern einer Funktion {}", answers: ["Anweisungsklammern", "Funktionsklammern", "Objektklammern", "Zuweisungsklammern"], correctAnswer: "Anweisungsklammern", link: "https://felix.hs-furtwangen.de/m/53faf22ce5d2821f77321cc06b9d4755/L07-01_Funktionen.pdf" },
+        { question: "Wie nennt man diese Klammern einer Funktion {}", answers: ["Anweisungsklammern", "Funktionsklammern", "Objektklammern", "Zuweisungsklammern"], correctAnswer: "Anweisungsklammernx", link: "https://felix.hs-furtwangen.de/m/53faf22ce5d2821f77321cc06b9d4755/L07-01_Funktionen.pdf" },
         { question: "Was kann bei einer Funktion optional sich in diesen Klammern () befinden? ", answers: ["Argumente", "Variablen", "Die Bezeichnung der Funktion", "CSS Objekte die dadurch interagieren"], correctAnswer: "Argumente", link: "https://felix.hs-furtwangen.de/m/53faf22ce5d2821f77321cc06b9d4755/L07-01_Funktionen.pdf" },
         { question: "Wie werden Variablen außerhalb einer Funktion genannt", answers: ["lokal", "global", "total", "monoklonal"], correctAnswer: "global", link: "https://felix.hs-furtwangen.de/m/53faf22ce5d2821f77321cc06b9d4755/L07-01_Funktionen.pdf" },
         { question: "Wie wird der Bereich einer Funktion zwischen {} geschweiften Klammern genannt?", answers: ["Funktionsbereich", "Wirkungsbereich", "Variablenbereich", "Aufgabenberreich"], correctAnswer: "Funktionsbereich", link: "https://felix.hs-furtwangen.de/m/53faf22ce5d2821f77321cc06b9d4755/L07-01_Funktionen.pdf" },
@@ -119,10 +123,10 @@ var Auswahl;
         let hidden2 = document.getElementById("Themengebiet");
         hidden2.style.display = "none";
         //Eventlistener für die Buttons der Antworten
-        let buttonA = document.getElementById("A");
-        let buttonB = document.getElementById("B");
-        let buttonC = document.getElementById("C");
-        let buttonD = document.getElementById("D");
+        buttonA = document.getElementById("A");
+        buttonB = document.getElementById("B");
+        buttonC = document.getElementById("C");
+        buttonD = document.getElementById("D");
         buttonA.addEventListener("click", function () { if (Buttonactive == true) {
             checkAnswer(Question.answers[0], Question.correctAnswer), Question.link;
         } });
@@ -177,25 +181,20 @@ var Auswahl;
         }
         //DOM Manipulation mit den Informationen aus Question
         let question = document.getElementById("question");
-        let dispplayA = document.getElementById("A");
-        let dispplayB = document.getElementById("B");
-        let dispplayC = document.getElementById("C");
-        let dispplayD = document.getElementById("D");
         question.innerHTML = Question.question;
-        dispplayA.innerHTML = Question.answers[0];
-        dispplayB.innerHTML = Question.answers[1];
-        dispplayC.innerHTML = Question.answers[2];
-        dispplayD.innerHTML = Question.answers[3];
+        buttonA.innerHTML = Question.answers[0];
+        buttonB.innerHTML = Question.answers[1];
+        buttonC.innerHTML = Question.answers[2];
+        buttonD.innerHTML = Question.answers[3];
         let link = document.getElementById("Erklärung");
-        link.setAttribute("href", Question.link);
         link.style.display = "none";
     }
     //Funktion für die Antworten
     function checkAnswer(answer, correctAnswer) {
         let Check = document.getElementById("Check");
         let link = document.getElementById("Erklärung");
-        link.innerHTML = Question.link;
-        link.style.display = "none";
+        link.setAttribute("href", Question.link);
+        link.style.display = "block";
         let Farbenwechsel = document.getElementById("Check");
         let WeiterButton = document.getElementById("WeiterButton");
         WeiterButton.style.display = "";
@@ -205,7 +204,6 @@ var Auswahl;
             console.log("Richtig");
             pointcounter++;
             Check.innerHTML = "Richtig";
-            link.style.display = "block";
             Farbenwechsel.style.background = "green";
             setTimeout(endGame, 100);
             //Dom Manipulation für die Erklärung
@@ -214,8 +212,8 @@ var Auswahl;
             console.log("Falsch");
             wrongquestioncounter++;
             Check.innerHTML = "Falsch";
-            link.style.display = "block";
             Farbenwechsel.style.background = "red";
+            Questions.push(Question);
             setTimeout(endGame, 100);
             //Dom Manipulation für die Erklärung und die anderen Knöpfe sind nicht mehr klickbar   
         }
@@ -236,14 +234,10 @@ var Auswahl;
             nochmal.style.display = "block";
             let question = document.getElementById("question");
             question.style.display = "none";
-            let dispplayA = document.getElementById("A");
-            dispplayA.style.display = "none";
-            let dispplayB = document.getElementById("B");
-            dispplayB.style.display = "none";
-            let dispplayC = document.getElementById("C");
-            dispplayC.style.display = "none";
-            let dispplayD = document.getElementById("D");
-            dispplayD.style.display = "none";
+            buttonA.style.display = "none";
+            buttonB.style.display = "none";
+            buttonC.style.display = "none";
+            buttonD.style.display = "none";
             let Check = document.getElementById("Check");
             Check.style.display = "none";
             let WeiterButton = document.getElementById("WeiterButton");
@@ -264,24 +258,4 @@ var Auswahl;
         }
     }
 })(Auswahl || (Auswahl = {}));
-//Für die Antworten nochmal ein shuffle, und eine for schleife, die auf die Buttons zugreift
-// const questionContainer  = document.getElementById("questionContainer");
-// for (let i = 0; i < questionHTML.length; i++) {
-//     let question = questionHTML[i];
-//     const div = document.createElement("div");
-//     div.innerHTML = `<h3>${question.question}</h3>`;
-//     question.answers.forEach(answer => {
-//         const answerEl = document.createElement("div");
-//         answerEl.innerHTML = answer;
-//         div.appendChild(answerEl);
-//     });
-//     questionContainer.appendChild(div);
-// }
-// //Fragen
-// if ([0] == undefined) {
-//     var textGewinnSP: HTMLParagraphElement = document.createElement("p");
-//     document.getElementById("test").appendChild(textGewinnSP);
-//     textGewinnSP.innerHTML = "Spieler gewinnt!";
-//     endGame = true;
-// 
 //# sourceMappingURL=sript.js.map
