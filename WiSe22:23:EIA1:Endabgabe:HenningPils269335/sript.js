@@ -208,14 +208,15 @@ var Auswahl;
         WeiterButton.style.display = "";
         questioncounter++;
         ButtonActive = false;
+        //Überprüfung der Antworten und Punktevergabe
         if (answer == correctAnswer) {
             console.log("Richtig");
             pointcounter++;
             Check.innerHTML = "Richtig";
             Farbenwechsel.style.background = "green";
             setTimeout(endGame, 100);
-            //Dom Manipulation für die Erklärung
         }
+        //Falsche Antworten werden in ein Array geladen
         else {
             console.log("Falsch");
             wrongquestioncounter++;
@@ -223,12 +224,12 @@ var Auswahl;
             Farbenwechsel.style.background = "red";
             Questions.push(Question);
             setTimeout(endGame, 100);
-            //Dom Manipulation für die Erklärung und die anderen Knöpfe sind nicht mehr klickbar   
         }
     }
-    //Spiel wird beendet
+    //Spiel wird beendet wenn 5 Fragen richtig beantwortet wurden
     function endGame() {
         if (pointcounter >= 5) {
+            // HTML Elemente werden als Counter angezeigt mit den jeweiligen erreichten Punkten
             let actualpoint = document.getElementById("pointvalue");
             actualpoint.innerHTML = pointcounter.toString() + "" + "Richtige Antworten";
             actualpoint.style.display = "block";
@@ -238,14 +239,18 @@ var Auswahl;
             let actualwrong = document.getElementById("wrongcounter-value");
             actualwrong.innerHTML = wrongquestioncounter.toString() + "" + "Falsche Antworten";
             actualwrong.style.display = "block";
+            //Nochmal Button wird angezeigt
             let nochmal = document.getElementById("nochmal");
             nochmal.style.display = "block";
+            //HTML Elemente werden ausgeblendet
             let question = document.getElementById("question");
             question.style.display = "none";
             buttonA.style.display = "none";
             buttonB.style.display = "none";
             buttonC.style.display = "none";
             buttonD.style.display = "none";
+            let answerwithlink = document.getElementById("answerwithlink");
+            answerwithlink.style.display = "none";
             let Check = document.getElementById("Check");
             Check.style.display = "none";
             let WeiterButton = document.getElementById("WeiterButton");

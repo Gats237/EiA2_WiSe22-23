@@ -248,45 +248,41 @@ function update (): void {
         link.setAttribute("href", Question.link);
         link.style.display = "block";
         let Farbenwechsel: HTMLElement = document.getElementById("Check") as HTMLElement;
-        
-
 
         let WeiterButton: HTMLElement = document.getElementById("WeiterButton") as HTMLElement;
         WeiterButton.style.display = "";
         questioncounter++;
         ButtonActive = false;
 
+        //Überprüfung der Antworten und Punktevergabe
         if (answer== correctAnswer) {
             console.log("Richtig");
             pointcounter++;
             Check.innerHTML = "Richtig";
-
             Farbenwechsel.style.background= "green";
             setTimeout(endGame, 100)
             
-           //Dom Manipulation für die Erklärung
         } 
         
+        //Falsche Antworten werden in ein Array geladen
     else {
             console.log("Falsch");
             wrongquestioncounter++;
             Check.innerHTML = "Falsch";
             Farbenwechsel.style.background= "red";
             Questions.push(Question);
-            setTimeout(endGame, 100);
-          
-              
-           //Dom Manipulation für die Erklärung und die anderen Knöpfe sind nicht mehr klickbar   
+            setTimeout(endGame, 100);   
 
     }
 
 }
 
 
-//Spiel wird beendet
+//Spiel wird beendet wenn 5 Fragen richtig beantwortet wurden
 
  function endGame(): void {  if (pointcounter>=5) {
 
+    // HTML Elemente werden als Counter angezeigt mit den jeweiligen erreichten Punkten
     let actualpoint: HTMLElement = document.getElementById("pointvalue") as HTMLElement;
     actualpoint.innerHTML = pointcounter.toString()+""+ "Richtige Antworten";
     actualpoint.style.display = "block";
@@ -297,21 +293,26 @@ function update (): void {
     actualwrong.innerHTML = wrongquestioncounter.toString()+""+"Falsche Antworten";
     actualwrong.style.display = "block";
     
+    //Nochmal Button wird angezeigt
     let nochmal: HTMLElement = document.getElementById("nochmal") as HTMLElement;   
     nochmal.style.display = "block";
 
+    //HTML Elemente werden ausgeblendet
     let question = document.getElementById("question") as HTMLElement;
     question.style.display = "none";
     buttonA.style.display = "none";
     buttonB.style.display = "none";
     buttonC.style.display = "none";
     buttonD.style.display = "none";
+    let answerwithlink: HTMLElement = document.getElementById("answerwithlink") as HTMLElement;
+    answerwithlink.style.display = "none";
     let Check: HTMLElement = document.getElementById("Check") as HTMLElement;
     Check.style.display = "none";
     let WeiterButton: HTMLElement = document.getElementById("WeiterButton") as HTMLElement;
     WeiterButton.style.display = "none";
     let link = document.getElementById("Erklärung") as HTMLElement;
     link.style.display = "none";
+
 
     
 
