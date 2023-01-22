@@ -5,7 +5,7 @@ var Auswahl;
     window.addEventListener("load", handleLoad);
     let Questions = [];
     let Question;
-    let Buttonactive = true;
+    let ButtonActive = true;
     let buttonA;
     let buttonB;
     let buttonC;
@@ -108,9 +108,11 @@ var Auswahl;
     }
     // Weiterleitung zum Spiel
     function navigateToGame(_Thema) {
+        // Fragen werden in Array geladen
         for (let i = 0; i < _Thema.length; i++) {
             Questions.push(_Thema[i]);
         }
+        // Array wird gemischt Positionen werden vertauscht
         for (let i = 0; i < 100; i++) {
             let loc1 = Math.floor(Math.random() * Questions.length);
             let loc2 = Math.floor(Math.random() * Questions.length);
@@ -118,8 +120,10 @@ var Auswahl;
             Questions[loc1] = Questions[loc2];
             Questions[loc2] = tmp;
         }
+        //Question wird angezeigt
         let hidden = document.getElementById("question-container");
         hidden.style.display = "block";
+        //Themenbereich wird ausgeblendet
         let hidden2 = document.getElementById("Themengebiet");
         hidden2.style.display = "none";
         //Eventlistener für die Buttons der Antworten
@@ -127,16 +131,17 @@ var Auswahl;
         buttonB = document.getElementById("B");
         buttonC = document.getElementById("C");
         buttonD = document.getElementById("D");
-        buttonA.addEventListener("click", function () { if (Buttonactive == true) {
+        //Eventlistener für die Buttons der Antworten 
+        buttonA.addEventListener("click", function () { if (ButtonActive == true) {
             checkAnswer(Question.answers[0], Question.correctAnswer), Question.link;
         } });
-        buttonB.addEventListener("click", function () { if (Buttonactive == true) {
+        buttonB.addEventListener("click", function () { if (ButtonActive == true) {
             checkAnswer(Question.answers[1], Question.correctAnswer), Question.link;
         } });
-        buttonC.addEventListener("click", function () { if (Buttonactive == true) {
+        buttonC.addEventListener("click", function () { if (ButtonActive == true) {
             checkAnswer(Question.answers[2], Question.correctAnswer), Question.link;
         } });
-        buttonD.addEventListener("click", function () { if (Buttonactive == true) {
+        buttonD.addEventListener("click", function () { if (ButtonActive == true) {
             checkAnswer(Question.answers[3], Question.correctAnswer), Question.link;
         } });
         //Eventlistener für den Weiter Button
@@ -154,22 +159,24 @@ var Auswahl;
         });
         update();
     }
-    //
+    //Update Funktion
     function update() {
-        //Clear Inner HTML für alle Buttons und die Frage
+        //Weiter Button wird ausgeblendet
         let wrong2 = document.getElementById("WeiterButton");
         wrong2.style.display = "none";
         //Reset Buttonactive
-        Buttonactive = true;
+        ButtonActive = true;
         //Punktestand Konsolen überprüfung
         console.log("Falsche Antowrten", wrongquestioncounter);
         console.log("Anzahl der Fragen", questioncounter);
         console.log("Richtige Fragen", pointcounter);
         console.log("update");
         console.log(Questions);
+        //Frage wird aus dem Array geladen und gelöscht
         Question = Questions[0];
         Questions.splice(0, 1);
-        for (let i = 0; i < 1000; i++) {
+        //Antworten werden gemischt
+        for (let i = 0; i < 100; i++) {
             //gibt eine zufällige Zahl zwischen 0 und 3 aus aus dem Array
             let loc1 = Math.floor(Math.random() * Question.answers.length);
             let loc2 = Math.floor(Math.random() * Question.answers.length);
@@ -186,6 +193,7 @@ var Auswahl;
         buttonB.innerHTML = Question.answers[1];
         buttonC.innerHTML = Question.answers[2];
         buttonD.innerHTML = Question.answers[3];
+        //Link wird ausgeblendet
         let link = document.getElementById("Erklärung");
         link.style.display = "none";
     }
@@ -199,7 +207,7 @@ var Auswahl;
         let WeiterButton = document.getElementById("WeiterButton");
         WeiterButton.style.display = "";
         questioncounter++;
-        Buttonactive = false;
+        ButtonActive = false;
         if (answer == correctAnswer) {
             console.log("Richtig");
             pointcounter++;

@@ -8,11 +8,13 @@ window.addEventListener("load", handleLoad);
 interface Question { question: string; answers: string[]; correctAnswer: string; link: string; }
 let Questions :Question [] = [ ];
 let Question :Question;
-let Buttonactive: boolean = true;
+let ButtonActive: boolean = true;
 let buttonA: HTMLButtonElement;
 let buttonB: HTMLButtonElement;
 let buttonC: HTMLButtonElement;
 let buttonD: HTMLButtonElement;
+
+
 
 //Counter Richtige Fragen/ Falsche Fragen/ Punkte   / Fragen
 let pointcounter: number = 0;
@@ -113,7 +115,7 @@ let Gemischt: Question [] = [
 
 // handleload der Seite //Buttons Auswahl Themen zuweisen 
 function handleLoad(): void {
-    console.log("Themen")
+    console.log("Themen");
     let T1 = document.getElementById("T1") as HTMLButtonElement;
     let T2 = document.getElementById("T2") as HTMLButtonElement;
     let T3 = document.getElementById("T3") as HTMLButtonElement;
@@ -132,9 +134,12 @@ function handleLoad(): void {
 
 function navigateToGame(_Thema:Question []): void {
     
+
+    // Fragen werden in Array geladen
     for (let i = 0; i < _Thema.length; i++) {
         Questions.push(_Thema[i]);
     }
+    // Array wird gemischt Positionen werden vertauscht
     for (let i = 0; i < 100; i++) {
         let loc1:number = Math.floor(Math.random() * Questions.length);
         let loc2:number = Math.floor(Math.random() * Questions.length);
@@ -144,8 +149,11 @@ function navigateToGame(_Thema:Question []): void {
         Questions[loc2] = tmp;
     }
 
+    //Question wird angezeigt
     let hidden: HTMLElement = document.getElementById("question-container") as HTMLElement;
     hidden.style.display = "block";
+
+    //Themenbereich wird ausgeblendet
     let hidden2: HTMLElement = document.getElementById("Themengebiet") as HTMLElement;
      hidden2.style.display = "none";
     
@@ -155,10 +163,11 @@ function navigateToGame(_Thema:Question []): void {
     buttonC = document.getElementById("C") as HTMLButtonElement;
     buttonD = document.getElementById("D") as HTMLButtonElement;
 
-    buttonA.addEventListener("click", function(){if (Buttonactive==true){checkAnswer(Question.answers[0], Question.correctAnswer), Question.link}});
-    buttonB.addEventListener("click", function(){if (Buttonactive==true){checkAnswer(Question.answers[1], Question.correctAnswer), Question.link}});
-    buttonC.addEventListener("click", function(){if (Buttonactive==true){checkAnswer(Question.answers[2], Question.correctAnswer), Question.link}});
-    buttonD.addEventListener("click", function(){if (Buttonactive==true){checkAnswer(Question.answers[3], Question.correctAnswer), Question.link}});
+//Eventlistener für die Buttons der Antworten 
+    buttonA.addEventListener("click", function(){if (ButtonActive==true){checkAnswer(Question.answers[0], Question.correctAnswer), Question.link}});
+    buttonB.addEventListener("click", function(){if (ButtonActive==true){checkAnswer(Question.answers[1], Question.correctAnswer), Question.link}});
+    buttonC.addEventListener("click", function(){if (ButtonActive==true){checkAnswer(Question.answers[2], Question.correctAnswer), Question.link}});
+    buttonD.addEventListener("click", function(){if (ButtonActive==true){checkAnswer(Question.answers[3], Question.correctAnswer), Question.link}});
 
 
 //Eventlistener für den Weiter Button
@@ -176,14 +185,14 @@ function navigateToGame(_Thema:Question []): void {
     
 }
 
-//
+//Update Funktion
 function update (): void {
-    //Clear Inner HTML für alle Buttons und die Frage
+    //Weiter Button wird ausgeblendet
     let wrong2: HTMLElement = document.getElementById("WeiterButton") as HTMLElement;
     wrong2.style.display = "none";
 
     //Reset Buttonactive
-    Buttonactive = true;
+    ButtonActive = true;
 
     //Punktestand Konsolen überprüfung
     console.log("Falsche Antowrten", wrongquestioncounter);
@@ -193,10 +202,12 @@ function update (): void {
 
     console.log("update");
     console.log(Questions)
+    //Frage wird aus dem Array geladen und gelöscht
     Question = Questions[0]
     Questions.splice(0, 1)
 
-    for (let i = 0; i < 1000; i++) {
+    //Antworten werden gemischt
+    for (let i = 0; i < 100; i++) {
         //gibt eine zufällige Zahl zwischen 0 und 3 aus aus dem Array
         let loc1:number = Math.floor(Math.random() * Question.answers.length);
         let loc2:number = Math.floor(Math.random() * Question.answers.length);
@@ -220,7 +231,7 @@ function update (): void {
         buttonC.innerHTML = Question.answers[2];
         buttonD.innerHTML = Question.answers[3];
        
-       
+       //Link wird ausgeblendet
         let link = document.getElementById("Erklärung") as HTMLElement;
         link.style.display = "none"
     
@@ -243,7 +254,7 @@ function update (): void {
         let WeiterButton: HTMLElement = document.getElementById("WeiterButton") as HTMLElement;
         WeiterButton.style.display = "";
         questioncounter++;
-        Buttonactive = false;
+        ButtonActive = false;
 
         if (answer== correctAnswer) {
             console.log("Richtig");
