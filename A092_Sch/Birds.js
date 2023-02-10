@@ -1,66 +1,64 @@
 "use strict";
-var L09_VogelhausClases;
-(function (L09_VogelhausClases) {
-    class Bird {
-        positon;
-        velocity;
-        type;
-        size;
-        style;
-        constructor() {
-            this.positon = new L09_VogelhausClases.Vector(0, 0);
-            this.positon.random(0, 100);
-            this.velocity = new L09_VogelhausClases.Vector(1, 200);
-            this.velocity.random(20, 1000);
-            this.style = "hsl(" + Math.random() * 180 + ", 50%, 25%)";
-        }
-        move(_timeslice) {
-            let offset = new L09_VogelhausClases.Vector(this.velocity.x, this.velocity.y);
-            offset.scale(_timeslice);
-            this.positon.add(offset);
-            if (this.positon.x < 0)
-                this.positon.x += L09_VogelhausClases.ctx.canvas.width;
-            if (this.positon.y < 0)
-                this.positon.y += L09_VogelhausClases.ctx.canvas.height;
-            if (this.positon.x > L09_VogelhausClases.ctx.canvas.width)
-                this.positon.x -= L09_VogelhausClases.ctx.canvas.width;
-            if (this.positon.y > L09_VogelhausClases.ctx.canvas.height)
-                this.positon.y -= L09_VogelhausClases.ctx.canvas.height;
-        }
-        drawbirds() {
-            L09_VogelhausClases.ctx.save();
-            L09_VogelhausClases.ctx.translate(this.positon.y, this.positon.x);
-            L09_VogelhausClases.ctx.beginPath();
-            L09_VogelhausClases.ctx.moveTo(0, 0);
-            L09_VogelhausClases.ctx.lineTo(35, -35);
-            L09_VogelhausClases.ctx.lineTo(-40, -40);
-            L09_VogelhausClases.ctx.lineTo(0, -45);
-            L09_VogelhausClases.ctx.lineTo(-40, -60);
-            L09_VogelhausClases.ctx.lineTo(30, -65);
-            L09_VogelhausClases.ctx.lineTo(45, -60);
-            L09_VogelhausClases.ctx.lineTo(50, -70);
-            L09_VogelhausClases.ctx.lineTo(55, -80);
-            L09_VogelhausClases.ctx.lineTo(65, -85);
-            L09_VogelhausClases.ctx.lineTo(90, -75);
-            L09_VogelhausClases.ctx.lineTo(75, -70);
-            L09_VogelhausClases.ctx.lineTo(75.25, -40);
-            L09_VogelhausClases.ctx.lineTo(75, -35);
-            L09_VogelhausClases.ctx.lineTo(65, -25);
-            L09_VogelhausClases.ctx.closePath();
-            L09_VogelhausClases.ctx.fillStyle = this.style;
-            L09_VogelhausClases.ctx.fill();
-            L09_VogelhausClases.ctx.stroke();
-            L09_VogelhausClases.ctx.beginPath();
-            L09_VogelhausClases.ctx.lineTo(55, -80);
-            L09_VogelhausClases.ctx.lineTo(65, -85);
-            L09_VogelhausClases.ctx.lineTo(90, -75);
-            L09_VogelhausClases.ctx.fillStyle = "white";
-            L09_VogelhausClases.ctx.closePath();
-            L09_VogelhausClases.ctx.fill();
-            L09_VogelhausClases.ctx.stroke();
-            L09_VogelhausClases.ctx.restore();
-        }
-    }
-    L09_VogelhausClases.Bird = Bird;
-})(L09_VogelhausClases || (L09_VogelhausClases = {}));
+// namespace L09_VogelhausClases{
+//     export class Bird {
+//         positon: Vector;
+//         velocity: Vector;
+//         type: number;
+//         size: number;
+//         style:any;
+//         constructor() {
+//             this.positon= new Vector(0,0);
+//             this.positon.random(0,100)
+//             this.velocity = new Vector(1, 200);
+//             this.velocity.random(20, 1000);
+//             this.style="hsl(" + Math.random() * 180 + ", 50%, 25%)"
+//         }
+//         move(_timeslice: number): void {
+//             let offset: Vector = new Vector(this.velocity.x, this.velocity.y);
+//             offset.scale(_timeslice);
+//             this.positon.add(offset);
+//             if (this.positon.x < 0) 
+//                 this.positon.x += ctx.canvas.width;
+//              if (this.positon.y< 0)
+//              this.positon.y += ctx.canvas.height;
+//             if (this.positon.x > ctx.canvas.width) 
+//             this.positon.x -= ctx.canvas.width;
+//             if (this.positon.y > ctx.canvas.height) 
+//             this.positon.y -= ctx.canvas.height;
+//             }
+//             drawbirds(){  
+//                 ctx.save();
+//                 ctx.translate(this.positon.y, this.positon.x);
+//                 ctx.beginPath();
+//                 ctx.moveTo(0, 0)
+//                 ctx.lineTo(35, -35);
+//                 ctx.lineTo(-40, -40);
+//                 ctx.lineTo(0, -45);
+//                 ctx.lineTo(-40, -60);
+//                 ctx.lineTo(30, -65);
+//                 ctx.lineTo(45, -60);
+//                 ctx.lineTo(50, -70);
+//                 ctx.lineTo(55, -80);
+//                 ctx.lineTo(65, -85);
+//                 ctx.lineTo(90, -75);
+//                 ctx.lineTo(75, -70);
+//                 ctx.lineTo(75.25, -40);
+//                 ctx.lineTo(75, -35);
+//                 ctx.lineTo(65, -25);
+//                 ctx.closePath();
+//                 ctx.fillStyle = this.style;
+//                 ctx.fill();
+//                 ctx.stroke();
+//                 ctx.beginPath();
+//                 ctx.lineTo(55, -80);
+//                 ctx.lineTo(65, -85);
+//                 ctx.lineTo(90, -75);
+//                 ctx.fillStyle = "white";
+//                 ctx.closePath();
+//                 ctx.fill();
+//                 ctx.stroke();
+//                 ctx.restore();                          
+//                    }
+//             }
+//         }
 //# sourceMappingURL=Birds.js.map

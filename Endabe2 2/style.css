@@ -1,0 +1,158 @@
+/* Default styles for all devices */
+body {
+    font-size: 16px;
+    margin: 0;
+}
+
+/* Styles for screens larger than 768px */
+@media (min-width: 768px) {
+    body {
+        font-size: 18px;
+    }
+}
+
+/* Styles for screens smaller than 768px */
+@media (max-width: 767px) {
+    body {
+        font-size: 10px;
+    }
+}
+
+
+body {
+
+        position: relative;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        margin: auto;
+        text-align: center;
+        width: 375px;
+        height: 667px;
+        background-color: rgb(179, 170, 170)}
+
+
+    .quiz {
+        position: relative;
+        margin: auto;
+        text-align: center;
+        width: 375px;
+        height: 667px;
+        background-color: rgb(179, 170, 170);
+    }
+
+
+   
+   
+.TButton  {
+        background-color: #4CAF50; /* Green */
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 10px;
+        border-style: outset;
+        border-radius: 10px;
+        border-color: black;
+        width: 200px;
+        padding: 15px;
+        position: relative;
+        margin-left: auto;
+         margin-right: auto;
+        cursor: pointer;
+        border-radius: 5px;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    }
+
+   
+    
+
+#question {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #ccc;
+}
+
+
+
+
+#A { background-color: #4CAF50; /* Green */
+    
+}
+
+#B { background-color: #4c81af; /* Blau*/
+
+}
+
+#C { background-color: #f60c0c; /* Rot*/
+   
+}
+
+#D { background-color: #460d55; /* Gleb*/
+   
+}
+
+#answerwithlink {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px 0;
+    width: 100%;
+    height: 10%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #ccc;
+}
+
+
+.counter-progress {
+    width: 0%;
+    height: 100%;
+    background-color: #4CAF50;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.counter-value {
+    font-size: 20px;
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #ccc;
+}
+
+
+#Check {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin: 20px 0;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #ccc;
+}
+
+
+
+#nextQ {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin: 20px 0;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #ccc;
+}
+
+
+    #nochmal{
+        background-color: #1f28ad; /* Green */
+        
+    }
+
