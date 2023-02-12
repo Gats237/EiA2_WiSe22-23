@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Wise 22/23 Endabgabe Feuerwerksimulator Henning Pils </title>
+    <link rel="stylesheet" href="firework.css">
+  <script src="Vector.js"></script>
+  <script src="Moveable.js"></script>
+  <script src="Particle.js"></script>
+  <script src="Explosion.js"></script>
+  <script src="Database.js" defer></script>
+  <script src="scriptn.js" defer></script>
+
+</head>
+
+  <body>
+    <h1>EIA2 Endabgabe Feuerwerksimulator</h1>
+    
+    <div id="rocket-builder">
+        <h2>Rocket Builder</h2>
+        <div>
+            <label for="saved-rockets-select">Gespeicherte Raketen:</label>
+            <br>
+            <select id="saved-rockets-select"></select>
+        </div>
+        <div>
+            <label for="rocket-name">Name der Rakete:</label>
+            <br>
+            <input type="text" id="rocket-name">
+        </div>
+        <div>
+            <label for="num-circles">Anzahl der Partikel (max: 1000):</label>
+            <br>
+            <input type="number" max="1000" id="num-circles">
+        </div>
+    
+        <div>
+            <label for="explosion-size">Größe der Partikel (max: 5):</label>
+            <br>
+            <input type="number" max="5" id="explosion-size">
+        </div>
+        <div>
+            <label for="explosion-lifetime">Lebenszeit in Sekunden (max: 5):</label>
+            <br>
+            <input type="number" max="5" id="explosion-lifetime">
+        </div>
+
+        <div>
+            <label for="explosion-color">Farbe der Explosion:</label>
+            <br>
+            <input type="color" id="explosion-color">
+        </div>
+        <button id="build-rocket-button">Rakete speichern</button>
+        
+    </div>
+    <canvas id="canvas" width="800" height="600"></canvas>
+ 
+</body>
+
+</html>
