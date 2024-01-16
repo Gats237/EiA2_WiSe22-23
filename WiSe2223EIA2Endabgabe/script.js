@@ -11,12 +11,12 @@ var FireworkSimulation;
     window.addEventListener("load", async () => {
         let serverRockets = await FireworkSimulation.handleLoad();
         serverRockets.forEach(rocket => {
-            addRocket(rocket);
+            addRocket(rocket); 
         });
     });
     FireworkSimulation.canvas = document.getElementById("canvas");
     FireworkSimulation.crc2 = FireworkSimulation.canvas.getContext("2d");
-    FireworkSimulation.refreshRate = 10;
+    FireworkSimulation.refreshRate = 10; // hier 
     // Globale Variablen für HTML Elemente
     let savedRocketsSelect = document.getElementById("saved-rockets-select");
     let nameInput = document.getElementById("rocket-name");
